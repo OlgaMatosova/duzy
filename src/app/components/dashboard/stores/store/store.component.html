@@ -1,0 +1,47 @@
+     <header>
+            <h3 class="storeName">{{store.name}}</h3>
+            <div class="editIcons">
+                <span class="editIcon" (click)="editMode(true)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23">
+                        <path fill="#FFF" fill-rule="nonzero" d="M16.188 1.27a.345.345 0 0 0-.484.086l-8.02 11.522a.345.345 0 0 0-.06.149l-.529 3.635a.348.348 0 0 0 .511.356l3.226-1.758a.341.341 0 0 0 .119-.107l8.02-11.522a.348.348 0 0 0-.086-.484l-2.697-1.878zm-5.761 13.418l-2.543 1.386.417-2.866L16.076 2.04l2.126 1.48-7.775 11.17zm8.013-6.455c.192 0 .348.156.348.348v11.673c0 1.13-.92 2.05-2.05 2.05H2.05c-1.13 0-2.049-.92-2.049-2.05V5.566c0-1.13.92-2.05 2.05-2.05h8.657a.348.348 0 1 1 0 .696H2.05c-.746 0-1.353.607-1.353 1.354v14.688c0 .747.607 1.354 1.353 1.354h14.69c.746 0 1.353-.607 1.353-1.354V8.581c0-.192.155-.348.348-.348zm1.405-6.314a.348.348 0 1 1-.386.58L16.669.637a.348.348 0 1 1 .385-.58l2.79 1.861z" opacity=".5"/>
+                    </svg>
+                </span>
+                <span class="delete" (click)="deleteItem(store._id, index)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="15" viewBox="0 0 11 15">
+                        <path fill="#00FFF9" fill-rule="nonzero" d="M0 1.598h10.328v.492H0v-.492zM9.14 15H1.19L.7 2.595l.492-.019.47 11.932h7.004l.453-11.923.492.02L9.139 15zm-7.05-1.66H7.04v.492H2.09v-.492zm5.41 0h.738v.492H7.5v-.492zM3.074 3.258h.492v9.13h-.492v-9.13zm1.813 0h.492v9.13h-.492v-9.13zm1.875 0h.492v9.13h-.492v-9.13zM5.41.707h1.598v.492H3.32V.707h1.598V0h.492v.707z" opacity=".5"/>
+                    </svg>
+                </span>
+            </div>
+        </header>
+
+  <form class="formForm" (ngSubmit)="editStoreF.valid && editStore(store)"
+              #editStoreF="ngForm" novalidate>
+            <div class="form-group" ngModelGroup="storeName" [ngClass]="{ 'has-error': editStoreF.submitted && !storeName.valid }">
+                <label class="label" for="storeName">YOUR {{store.source}} STORE NAME</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="storeName"
+                    name="storeName"
+                    maxlength="60"
+                    readonly="readonly"
+                    #storeName="ngModel"
+                    [(ngModel)]="store.name"
+                    required>
+            </div>
+       
+            <div class="form-group" ngModelGroup="storeApiKey" >
+                <label class="label" for="storeApiKey">YOUR Storefront access token</label>
+                <p>{{store.accessToken}}</p>
+            </div>
+       
+            <p *ngIf="editModeValue" class="textRight submitBtnWrap">
+                <app-button (click)="editMode(false)"><span>cancel</span></app-button>
+                <app-button><span>save</span></app-button>
+            </p>
+        </form>
+        <div [@popOverState]="checkValidity(storeName, editStoreF)" class="errorWrap">
+            <i class="material-icons">error</i>
+            <show-errors [control]="storeName" [form]="editStoreF"></show-errors>
+            <div class="errorLine" *ngIf="serverError">{{serverError}}</div>
+        </div>

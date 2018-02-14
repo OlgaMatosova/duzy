@@ -1,0 +1,157 @@
+<div>
+    <div class="profileEditHeader">
+        <h3>USER INFO</h3>
+        <span class="editIcon" (click)="editMode()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23">
+                <path fill="#FFF" fill-rule="nonzero" d="M16.188 1.27a.345.345 0 0 0-.484.086l-8.02 11.522a.345.345 0 0 0-.06.149l-.529 3.635a.348.348 0 0 0 .511.356l3.226-1.758a.341.341 0 0 0 .119-.107l8.02-11.522a.348.348 0 0 0-.086-.484l-2.697-1.878zm-5.761 13.418l-2.543 1.386.417-2.866L16.076 2.04l2.126 1.48-7.775 11.17zm8.013-6.455c.192 0 .348.156.348.348v11.673c0 1.13-.92 2.05-2.05 2.05H2.05c-1.13 0-2.049-.92-2.049-2.05V5.566c0-1.13.92-2.05 2.05-2.05h8.657a.348.348 0 1 1 0 .696H2.05c-.746 0-1.353.607-1.353 1.354v14.688c0 .747.607 1.354 1.353 1.354h14.69c.746 0 1.353-.607 1.353-1.354V8.581c0-.192.155-.348.348-.348zm1.405-6.314a.348.348 0 1 1-.386.58L16.669.637a.348.348 0 1 1 .385-.58l2.79 1.861z" opacity=".5"/>
+            </svg>
+        </span>
+    </div>
+    <div class="editProfileWrap">
+        <form (ngSubmit)="profileF.valid && saveProfile()" #profileF="ngForm" novalidate>
+            <div class="flexWrapper">
+                <div class="form-group" ngModelGroup="profile" [ngClass]="{ 'has-error': profileF.submitted && !email.valid }">
+                     <label class="label" for="email">Email Address</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        [(ngModel)]="profile.email"
+                        name="email"
+                        maxlength="60"
+                        pattern="^\S+@\S+$"
+                        #email="ngModel"
+                        readonly="readonly"
+                        required>
+                </div>
+                <div class="form-group" ngModelGroup="profile" >
+                    <label class="label" for="firstName">FIRST NAME</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        [(ngModel)]="profile.firstName"
+                        name="firstName"
+                        readonly="readonly"
+                        placeholder="Enter you first name"
+                        #firstName="ngModel"
+                        pattern="^[a-zA-Z\s'-]+$"
+                        >
+                </div>
+
+                <div class="form-group" ngModelGroup="profile" >
+                    <label class="label" for="lastName">LAST NAME</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        [(ngModel)]="profile.lastName"
+                        name="lastName"
+                        readonly="readonly"
+                        placeholder="Enter your last name"
+                        #lastName="ngModel"
+                        pattern="^[a-zA-Z\s'-]+$"
+                        >
+                </div>
+            </div>
+            <p *ngIf="editModeValue"class="textRight saveProfile">
+                <app-button (click)="cancel()"><span>Cancel</span>
+                </app-button><app-button><span>Save</span></app-button>
+            </p>
+        </form>
+    </div>
+    <div [@popOverState]="checkValidity(email,firstName,lastName, profileF)" class="errorWrap">
+        <i class="material-icons">error</i>
+        <show-errors [control]="email" [form]="profileF"></show-errors>
+        <show-errors [control]="firstName" [form]="profileF"></show-errors>
+        <show-errors [control]="lastName" [form]="profileF"></show-errors>
+          <div class="errorLine" *ngIf="showProfileError">{{showProfileError}}</div>
+    </div>
+    <div [@popOverState]="showSuccessChange" class="successWrap">
+        <i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+                <path fill="#0F9" fill-rule="nonzero" d="M7.07 0C3.214 0 .058 3.15.058 7s3.156 7 7.014 7c3.857 0 7.013-3.15 7.013-7s-3.156-7-7.013-7zM5.669 10.5L2.161 7l.982-.98 2.525 2.52 5.33-5.32.982.98-6.312 6.3z"/>
+            </svg>
+        </i>
+        The changes will be apply after new email address confirmation. Confirmation link is valid for 24 hours
+    </div>
+</div>
+
+
+<div>
+    <div class="profileEditHeader">
+        <h3>CHANGE PASSWORD</h3>
+    </div>
+    <div class="editProfileWrap">
+        <form (ngSubmit)="passF.valid && changePass()" #passF="ngForm" novalidate>
+            <div class="flexWrapper">
+                <div class="form-group"  [ngClass]="{ 'has-error': passF.submitted && !password.valid }">
+                     <label class="label" for="">YOUR CURRENT PASSWORD</label>
+                    <input
+                        [type]="showPassword ? 'text' : 'password'"
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        [(ngModel)]="passF.password"
+                        required
+                        maxlength="30"
+                        minlength="8"
+                        #password="ngModel">
+                        <span class="changeTypePass" (click)="showPassword = !showPassword"><i class="material-icons">{{ (showPassword ? 'visibility' : 'visibility_off')}}</i></span>
+                </div>
+                <div class="form-group"  [ngClass]="{ 'has-error': passF.submitted && !newPassword.valid }">
+                     <label class="label" for="">YOUR NEW PASSWORD</label>
+                    <input
+                        [type]="showNewPassword ? 'text' : 'password'"
+                        type="password"
+                        class="form-control"
+                        id="newPassword"
+                        name="newPassword"
+                        [(ngModel)]="passF.newPassword"
+                        required
+                        maxlength="30"
+                        minlength="8"
+                        validateEqual="confirmPassword"
+                        reverse="true"
+                        #newPassword="ngModel">
+                        <span class="changeTypePass" (click)="showNewPassword = !showNewPassword"><i class="material-icons">{{ (showNewPassword ? 'visibility' : 'visibility_off')}}</i></span>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': passF.submitted && !confirmPassword.valid }">
+                     <label class="label" for="">CONFIRM YOUR NEW PASSWORD</label>
+                    <input
+                        [type]="showConfPassword ? 'text' : 'password'"
+                        type="password"
+                        class="form-control"
+                        name="confirmPassword"
+                        [(ngModel)]="passF.confirmPassword"
+                        required
+                        maxlength="30"
+                        minlength="8"
+                        validateEqual="newPassword"
+                        reverse="false"
+                        #confirmPassword="ngModel">
+                        <span class="changeTypePass" (click)="showConfPassword = !showConfPassword"><i class="material-icons">{{ (showConfPassword ? 'visibility' : 'visibility_off')  }}</i></span>
+                </div>
+            </div>
+            <p class="textRight saveProfile">
+                <app-button><span>CHANGE</span></app-button>
+            </p>
+        </form>
+
+    </div>
+    <div [@popOverState]="checkValidityPass(password, newPassword, confirmPassword , passF)" class="errorWrap">
+        <i class="material-icons">error</i>
+        <show-errors [control]="password" [form]="passF"></show-errors>
+        <show-errors [control]="newPassword" [form]="passF"></show-errors>
+        <show-errors [control]="confirmPassword" [form]="passF"></show-errors>
+        <div class="errorLine" *ngIf="showResetError">{{showResetError}}</div>
+    </div>
+
+    <div [@popOverState]="showPassChange" class="successWrap">
+        <i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+                <path fill="#0F9" fill-rule="nonzero" d="M7.07 0C3.214 0 .058 3.15.058 7s3.156 7 7.014 7c3.857 0 7.013-3.15 7.013-7s-3.156-7-7.013-7zM5.669 10.5L2.161 7l.982-.98 2.525 2.52 5.33-5.32.982.98-6.312 6.3z"/>
+            </svg>
+        </i>
+        Your password was successfully changed
+    </div>
+</div>

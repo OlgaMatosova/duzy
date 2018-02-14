@@ -1,0 +1,23 @@
+<div class="imageBlock">
+    <div class="mainImage"><img src="{{products[choosingImage].image}}"  alt="" /></div>
+    <div *ngFor="let product of products; let i = index" class="smallImages" [class.selected]="product === selectedProduct">
+        <img src='{{product.image}}' (click)="chooseProduct(i, product)"  alt="" />
+    </div>
+    <div *ngIf="products.length > 0" class="mobileShow countVariants">
+        Variable product:
+        <span>+{{products.length}}</span> more
+    </div>
+</div>
+<div class="productDetails">
+    <div class="productTitle">{{products[choosingImage].title}}</div>
+    <div *ngIf="products.length > 0" class="mobileHide countVariants">
+        Variable product:
+        <span>+{{products.length}}</span> more
+    </div>
+    <div class="price">{{this.currency}}{{products[choosingImage].price}}</div>
+    <div class="options">
+        <li *ngFor="let option of products[choosingImage].options">
+            {{option.name}} : {{option.value}}
+        </li>
+    </div>
+</div>

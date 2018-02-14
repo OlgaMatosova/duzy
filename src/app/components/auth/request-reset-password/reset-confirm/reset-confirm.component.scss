@@ -1,0 +1,23 @@
+@import '../../register/register.component.scss';
+
+:host {
+    @include respond-to('small') {
+        background: rgba(0, 0, 0, 0.4);
+    }
+    background: rgba(0, 0, 0, 0.2);
+    padding-top: 45px;
+    max-width: 480px;
+
+    p {
+        color: $white;
+        padding-bottom: 40px;
+    }
+}
+
+.errorLine {
+    color: $watermelon;
+
+    &:first-letter {
+        text-transform: uppercase;;
+    }
+}

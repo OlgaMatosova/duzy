@@ -1,0 +1,59 @@
+@import '~admin/scss/base/_variables.scss';
+:host .dragDrop {
+    @include respond-to('min-large') {
+        max-height: 275px;
+    }
+    @include respond-to('medium-large') {
+        max-height: 300px;
+    }
+    @include respond-to('medium') {
+        max-height: 250px;
+        min-height: 250px;
+    }
+    @include respond-to('small') {
+        max-height: 150px;
+        min-height: 150px;
+    }
+    position: absolute;
+    margin-top: 0px;
+    width: 100%;
+    z-index:2;
+    max-height: 370px;
+    height: 100%;
+    &.hidden {
+        display: none;
+    }
+
+    &::after {
+        content: '';
+        background: rgba(20, 34, 39, 0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .dragDropWrapper {
+        @include respond-to('small') {
+            margin: 7px;
+        }
+        width: 100%;
+        z-index: 1;
+    }
+    /deep/ ng4-files-click label {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+    /deep/ ng4-files-click label .dragIcons {
+        margin-top: 10px;
+        svg {
+            margin: 0 5px;
+        }
+    }
+}
+
+
+
+

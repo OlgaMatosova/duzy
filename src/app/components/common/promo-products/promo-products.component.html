@@ -1,0 +1,15 @@
+
+<ul class="promoProducts">
+    <li *ngFor="let promoItem of getproducts | showfilter: {itemsPerPage: 3, currentPage: page}; let i = index" class="promoItem">
+        <app-product-item class="inPromo" [products]="promoItem['variants']"></app-product-item>
+        <app-remove-svg (click)="removePromoItem(i, page)"></app-remove-svg>
+    </li>
+</ul>
+
+<div class="textCenter pagination" *ngIf="getproducts.length > 3">
+    <ul class="">
+        <li [ngClass]="{'active': (pageNum - 1) === page}" (click)="onPage(pageNum)" *ngFor="let pageNum of getPages(); let i = index;"><span></span></li>
+    </ul>
+    <mat-paginator *ngIf="getproducts.length > 3" #paginator [length]="getproducts.length" [pageSize]="3" (page)="page = getServerData($event)"></mat-paginator>
+</div>
+

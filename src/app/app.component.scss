@@ -1,0 +1,276 @@
+@import '~admin/scss/base/_reset.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~admin/scss/base/_variables.scss';
+
+a {
+    color: $white;
+    text-decoration: none;
+}
+
+.mobileHide {
+    @include respond-to('medium') {
+        display: none!important;;
+    }
+}
+
+.mobileShow {
+    @include respond-to('medium') {
+        display: block!important;
+    }
+    display: none;
+}
+
+:host.isAuth {
+    @include respond-to('small') {
+        background-position: 0 -20%, 50% 150%, right;
+        /*min-height: 100vh;*/
+    }
+    background-image: url("/admin/images/header-dots.png"), url("/admin/images/footer-dots.png"), linear-gradient(to top, $steel-blue, $dull-blue 49%,$dark-blue-grey);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: 0 0, 50% 100%, right;
+    width: 100%;
+     min-height: 100%;
+    /*min-height: 100vh;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-size: auto;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.auth, .form {
+
+    &Header {
+        @include respond-to('small') {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 0;
+            svg {
+                width: 30px
+            }
+        }
+        background: rgba(0, 0, 0, 0.3);
+        padding:  48px 0 43px;
+        margin-bottom: 2px;
+    }
+
+    &Form, & {
+        @include respond-to('small') {
+            padding: 30px 20px 0;
+        }
+        padding: 60px 110px 0;
+
+        p {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .label {
+            @include respond-to('small') {
+                color: rgba(255,255,255, 0.7);
+                margin-bottom: 0px;
+            }
+            text-transform: uppercase;
+            color: rgba(255,255,255, 0.4);
+            font-size: $base-font-size - 4;
+            display: block;
+            margin-bottom: 7px;
+            letter-spacing: 1.2px;
+        }
+
+        .form-group {
+            @include respond-to('small') {
+                margin-bottom: 15px;
+            }
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .form-control {
+            @include respond-to('small') {
+                padding: 5px 0;
+            }
+            background: none;
+            padding: 10px 0;
+            font-size: $base-font-size;
+            color: $white;
+            border: 0;
+            width: 100%;
+            border-bottom: 2px solid rgba(255,255,255, 0.8);
+            border-radius: 0;
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+                -webkit-box-shadow: 0 0 0 30px transparent inset;
+                background: transparent!important;
+                -webkit-text-fill-color: rgba(255,255,255, 1)!important;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .submitBtnWrap {
+            @include respond-to('small') {
+                margin-top: 15px;
+            }
+            margin-top: 45px;
+        }
+    }
+}
+
+input:-webkit-contacts-auto-fill-button {
+  visibility: hidden!important;
+  display: none!important;
+  pointer-events: none!important;
+  position: absolute!important;
+  right: 0!important;
+  visibility: hidden!important;
+}
+
+input::-webkit-textfield-decoration-contaiter,
+input::-webkit-caps-lock-indicator,
+input::-webkit-credentials-auto-fill-button{
+    display: none!important;
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+    display:none!important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+}
+
+@keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+
+@-webkit-keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+.mat-tab-labels {
+    background: $white;
+    max-width: 100%!important;
+}
+
+.errorWrap {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 53px;
+    position: relative;
+
+    .material-icons {
+        position: absolute;
+        top: 15px;
+        left: 27px;
+        color: $watermelon;
+        font-size: $base-font-size + 4;
+    }
+}
+
+.changeTypePass {
+    @include respond-to('small') {
+        opacity: 0.7;
+        top: 23px;
+    }
+    position: absolute;
+    top: 33px;
+    right: 0;
+    color: $white;
+    opacity: 0.4;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    i {
+        font-size: $base-font-size - 3;
+    }
+}
+
+.runLineLink {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding-bottom: 2px;
+    vertical-align: middle;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        left: -100%;
+        border-bottom: 1px solid $white;
+        display: block;
+    }
+
+    &:hover {
+        color: rgba(255, 255, 255, 1)!important;
+
+        &::after {
+            -webkit-animation: runLine 1s ; /* Safari 4+ */
+            -moz-animation:    runLine 1s ; /* Fx 5+ */
+            -o-animation:      runLine 1s ; /* Opera 12+ */
+            animation:         runLine 1s ; /* IE 10+, Fx 29+ */
+        }
+    }
+}
+
+.has-error {
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+
+    &::after {
+        @include respond-to('small') {
+            bottom: 2px;  
+        }
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        left: -100%;
+        border-bottom: 2px solid $watermelon;
+        display: block;
+        -webkit-animation: runLine 1s ; /* Safari 4+ */
+        -moz-animation:    runLine 1s ; /* Fx 5+ */
+        -o-animation:      runLine 1s ; /* Opera 12+ */
+        animation:         runLine 1s ; /* IE 10+, Fx 29+ */
+    }
+}
+
+@-webkit-keyframes runLine {
+    0%   { left: -100%; }
+      100% { left: 100%; }
+}
+@-moz-keyframes runLine {
+    0%   { left: -100%; }
+      100% { left: 100%;  }
+}
+@-o-keyframes runLine {
+    0%  { left: -100%; }
+      100% { left: 100%;}
+}
+@keyframes runLine {
+    0%   { left: -100%; }
+    100% { left: 100%;}
+}

@@ -1,0 +1,59 @@
+$dark: #142227;
+$dark-green-blue: #1e5f6f;
+$cyan: #00fff9;
+$greeny-blue: #49bdca;
+$white: #ffffff;
+$black: #000000;
+$watermelon: #ff4555;
+$steel-blue: #578498;
+$dull-blue: #447e97;
+$dark-blue-grey: #1f3a44;
+$base-font-sans-serif:  'Muli', 'Helvetica Neue', 'Helvetica', sans-serif;
+$base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
+
+// Body
+$base-text-color: $white !default;
+$base-font-size: 16px !default;
+$base-line-height: 1.2 !default;
+$base-font-family: $base-font-sans-serif !default;
+/*$max-width: 1000px;*/
+$vertical-rhythm: ($base-line-height * 1em);
+
+$base-min-width: 320px;
+
+// Liks
+/*$base-link-color: $gray;*/
+
+// Buttons 
+$btn-color: $white !default;
+$btn-background-hover: $greeny-blue !default;
+/*$btn-padding: 0.4em 0.7em !default;*/
+$btn-font-size: 12px !default;
+
+$animation-speed: 0.3s;
+$breakpoints: (
+    'medium-landscape':  (orientation : landscape ),
+    'small':  ( max-width:  767px ),
+    'medium': ( max-width:  992px ),
+    'medium-large': ( max-width:  1024px ),
+    'min-large':  ( max-width: 1200px ),
+    'extra-large': ( max-width:  1450px ),
+    'large':  ( min-width: 1200px ),
+
+) !default;
+
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Prints a media query based on the value
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}

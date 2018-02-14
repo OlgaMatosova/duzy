@@ -1,0 +1,160 @@
+@import '~admin/scss/base/_variables.scss';
+
+:host {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.scrollable {
+    @include respond-to('min-large') {
+        max-height: 821px;
+    }
+    @include respond-to('medium') {
+        max-height: calc(100vh - 200px);
+    }
+    max-height: 922px;
+    height: 100%;
+    padding-bottom: 20px;
+}
+/deep/ .mCSB_inside > .mCSB_container {
+    margin-right: 0!important;
+}
+
+/deep/ .mat-ink-bar {
+    display: none;
+}
+
+/deep/ .mat-expansion-indicator {
+    display: none;
+}
+
+
+
+/deep/ #mCSB_1_scrollbar_vertical {
+    top: 11px!important;
+    right: 6px!important;
+    opacity: 1!important;
+}
+
+/deep/ .mCSB_dragger_bar {
+    background-color: rgba(255,255,255, 1)!important;
+    width: 3px!important;
+}
+
+/deep/ .mCSB_draggerRail {
+    background-color: rgba(255,255,255, 0.3)!important;
+    width: 3px!important;
+}
+
+
+
+.productsWrapper {
+    overflow: hidden;
+}
+
+.titleCategory {
+    @include respond-to('medium') {
+        font-size: $base-font-size;
+    }
+    color: $white;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    font-size: $base-font-size + 2;
+    text-transform: uppercase;
+    display: inline-block;
+
+    &::before {
+        content: '';
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        display: inline-block;
+        border-left: 7px solid $white;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+}
+
+.addItem {
+    @include respond-to('min-large') {
+        padding: 0 7px;
+    }
+    @include respond-to('medium') {
+        padding: 0 5px;
+    }
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 0 12px;
+    background: rgba(0, 0, 0, 0.1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 104%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0;
+        background: $cyan;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+        -webkit-transform: scale(1, 0.5);
+        transform: scale(1, 0.5);
+    }
+
+    &:hover {
+        &::after {
+            opacity: 1;
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+    }
+
+    &:hover {
+        svg path {
+            fill: $white;
+        }
+    }
+
+    svg {
+        @include respond-to('medium') {
+            width: 10px;
+        }
+        position: relative;
+        z-index: 2;
+
+        path {
+            fill: $white;
+        }
+    }
+}
+
+.productItem {
+    position: relative;
+
+    &.added {
+        .addItem {
+            background: $cyan;
+            cursor: default;
+        }
+
+        app-product-item {
+            opacity: 0.7;
+        }
+    }
+}

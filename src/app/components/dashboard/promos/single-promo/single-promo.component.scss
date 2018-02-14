@@ -1,0 +1,950 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '../../../../app.component.scss';
+
+:host {
+    @include respond-to('min-large') {
+        min-height: 0vh;
+    }
+    @include respond-to('medium') {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        min-height: 0vh;
+    }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    min-height: 92vh;
+}
+
+.inPromo {
+    @include respond-to('medium') {
+        padding-top: 10px;
+    }
+}
+
+.inPromo /deep/ .options,
+.inPromo /deep/ .price,
+.inPromo /deep/ .smallImages {
+    display: none;
+}
+
+.inPromo /deep/ .productDetails .countVariants {
+    display: block;
+    background: none;
+    text-align: left;
+    font-size: $base-font-size + 2;
+}
+
+.inPromo /deep/ .productTitle {
+    @include respond-to('medium') {
+        margin-top: 0;
+        margin-left: 0%;
+        font-size: $base-font-size + 2;
+    }
+}
+
+.inPromo /deep/ .imageBlock .countVariants {
+    @include respond-to('medium') {
+        display: none!important;
+    }
+}
+
+.inPromo /deep/ .imageBlock {
+    max-width: 100px;
+
+    .mainImage {
+        margin-bottom: 0;
+    }
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.productsCatalog {
+    @include respond-to('medium') {
+        width: calc(100% - 40px);
+        position: fixed;
+        top: 60px;
+        left: 20px;
+        display: block;
+        height: calc(100vh - 190px);
+    }
+    @media (orientation : landscape ) and 
+       (max-width: 992px)  {
+            height: calc(100vh - 150px);
+        }
+    width: calc(50% - 40px);
+    display: flex;
+
+    &.show {
+        @include respond-to('medium') {
+            display: block!important;
+        }
+    }
+
+    .selectDots {
+        @include respond-to('medium') {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background: #0d232d;
+            text-align: center;
+            z-index: 4;
+            line-height: 47px;
+        }
+    }
+}
+
+/deep/ #mCSB_1_scrollbar_vertical {
+    top: 50px!important;
+    opacity: 1!important;
+}
+
+/deep/ .mCSB_dragger_bar {
+    background-color: rgba(255,255,255, 1)!important;
+    width: 3px!important;
+}
+
+/deep/ .mCSB_draggerRail {
+    background-color: rgba(255,255,255, 0.3)!important;
+    width: 3px!important;
+}
+
+/deep/ .mat-tab-header-pagination {
+    display: none!important;
+}
+
+.createPromo {
+    @include respond-to('extra-large') {
+        margin-right: 31px;
+    }
+    @include respond-to('medium') {
+        font-size: $base-font-size - 4;
+        width: 100%;
+        margin-right: 0;
+    }
+    letter-spacing: 0.6px;
+    margin-right: 41px;
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+
+    .preview {
+        @include respond-to('min-large') {
+            min-height: 270px;
+            max-height: 270px;
+        }
+        @include respond-to('medium-large') {
+            min-height: 300px;
+            max-height: 300px;
+        }
+        @include respond-to('medium') {
+            min-height: 253px;
+             max-height: 253px;
+
+        }
+
+        min-height: 370px;
+        max-height: 370px;
+        background: rgba(20, 34, 39, 0.6);
+        padding: 35px;
+        color: $greeny-blue;
+        -webkit-flex-basis: 390px;
+        -moz-flex-basis: 390px;
+        flex-basis: 390px;
+        overflow: hidden;
+        position: relative;
+
+        .convertVideo {
+            position: absolute;
+            bottom: 10px;
+            color: $white;
+            left: 0;
+            width: 100%;
+        }
+
+        &.hasPreview {
+                        @include respond-to('medium-large') {
+                              min-height: 300px;
+                            max-height: 300px;
+                        }
+            @include respond-to('medium') {
+                max-height: 250px;
+                min-height: 250px;
+                margin-top: 0;
+            }
+            
+            @include respond-to('small') {
+                min-height: 150px;
+                max-height: 150px;
+                margin-top: 0;
+            }
+            padding: 0;
+            max-height: 300px;
+            text-align: center;
+
+            img {
+                max-height: 100%;
+                margin: 0 -50%;
+                max-width: 500%;
+            }
+        }
+
+        img {
+            margin-top: 0;
+        }
+
+        a {
+            color: $greeny-blue;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding-bottom: 2px;
+            vertical-align: middle;
+            font-weight: 600;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                width: 90%;
+                left: -100%;
+                border-bottom: 1px solid $white;
+                display: block;
+            }
+
+            &:hover {
+                color: rgba(255, 255, 255, 1)!important;
+
+                &::after {
+                    -webkit-animation: runLine 1s ; /* Safari 4+ */
+                    -moz-animation:    runLine 1s ; /* Fx 5+ */
+                    -o-animation:      runLine 1s ; /* Opera 12+ */
+                    animation:         runLine 1s ; /* IE 10+, Fx 29+ */
+                }
+            }
+        }
+    }
+    .productContainer {
+        display: flex;
+
+        width: 100%;
+        justify-content: space-between;
+        height: calc(100% - 118px);
+        flex-direction: column;
+    }
+    .promoProducts {
+        @include respond-to('small') {
+            height: inherit;
+        }
+        clear: both;
+        padding-top: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .promoItemsWrapper {
+        @include respond-to('min-large') {
+            font-size: $base-font-size - 2;
+        }
+        @include respond-to('medium') {
+            padding-bottom: 93px;
+        }
+        @include respond-to('small') {
+            padding-bottom: 0;
+            font-size: $base-font-size - 4;
+        }
+        height: 100%;
+    }
+
+    .promoItems {
+        @include respond-to('extra-large') {
+            padding: 15px;
+            padding-bottom: 80px;
+        }
+        @include respond-to('medium') {
+            padding: 10px;
+            padding-bottom: 20px;
+            flex-basis: auto;
+            min-height: 160px;
+        }
+        @include respond-to('small') {
+            padding-bottom: 90px;
+        }
+        
+        &.slowMode {
+            @include respond-to('small') {
+                padding-bottom: 40px;
+             }
+        }
+        
+        margin-top: 1px;
+        background: rgba(0, 0, 0, 0.3);
+        color: $white;
+        padding: 35px;
+        -moz-flex-basis: 100%;
+        -webkit-flex-basis: 100%;
+        flex-basis: 100%;
+        overflow: hidden;
+        padding-bottom: 85px;
+        flex: 1 0 auto;
+    }
+
+    .mobileAddItem {
+        @include respond-to('medium') {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        background: rgba(0,0,0,0.2);
+        width: 100%;
+        height: 30px;
+        padding: 0;
+        border: 0;
+        line-height: 30px;
+        color: $white;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+
+        span {
+            width: 30px;
+            height:30px;
+            line-height: 30px;
+            float: left;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+
+            svg {
+                width: 10px;
+                path{
+                    fill: $white;
+                }
+            }
+        }
+    }
+
+    .promoItem {
+        position: relative;
+    }
+
+    .itemsCount {
+        background: $cyan;
+        display: inline-block;
+        padding: 1px 10px;
+        color: $dark;
+        border-radius: 20px;
+    }
+}
+
+.clear {
+    color: $dark;
+    font-size: $base-font-size;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    background: rgba(0, 255, 249, 0.3);
+    float: right;
+    padding: 2px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+         @media only screen
+            and (min-device-width: 320px)
+            and (max-device-width: 568px)
+            and (-webkit-min-device-pixel-ratio: 2){
+                  background: none;
+            }
+        background: $cyan;
+    }
+}
+
+.promoStatus {
+    @include respond-to('medium') {
+        font-size: $base-font-size - 4;
+        line-height: 20px;
+        width: 56px;
+        height: 20px;
+    }
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: $cyan;
+    color: $dark;
+    width: 76px;
+    height: 26px;
+    border-radius:  19.5px;
+    font-size: $base-font-size - 2;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 26px;
+}
+
+.productsCatalog  /deep/ .mat-tab-group,
+.productsCatalog /deep/ .mat-tab-body-wrapper{
+    height: 100%;
+    width: 100%;
+}
+
+/deep/ .mat-dialog-content {
+    @include respond-to('medium') {
+        line-height: 1.2;
+        font-size: $base-font-size - 2;
+    }
+    text-align: center;
+    font-size: $base-font-size + 2;
+    line-height: 1.39;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.buttonsPublication /deep/ .mat-button {
+
+    @include respond-to('extra-large') {
+        min-width: 110px !important;
+    }
+    @include respond-to('medium-large') {
+         min-width: 90px !important;
+    }
+    @include respond-to('medium') {
+        padding: 0 10px!important;
+        min-width: 75px !important;
+        font-size:  $base-font-size - 5;
+    }
+}
+
+.backToPromo {
+    @include respond-to('medium') {
+        margin: -45px auto 0!important;
+        z-index: 3;
+        width: 80px;
+    }
+}
+
+/deep/ .mat-paginator-container  {
+    @include respond-to('medium') {
+        margin-bottom: 97px;
+    }
+    padding: 0!important;
+    margin-top: -30px;
+}
+
+.updatePromo {
+    float: right;
+    border-radius: 19.5px;
+    display: inline-block;
+    padding: 2px 8px;
+    color: $dark;
+    font-size: $base-font-size;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    cursor: pointer;
+    background: rgba(0, 255, 249, 0.3);
+    transition: all 0.2s ease-out;
+
+    &:hover {
+        background-color: $cyan;
+        color: $dark;
+    }
+}
+
+.btns {
+    overflow: hidden;
+    float: left;
+    margin-top: 0;
+    @include respond-to('medium') {
+        float: none;
+    }
+}
+
+.asTab {
+    @include respond-to('medium') {
+        border-radius: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: $white;
+        font-size: $base-font-size - 2;
+        font-weight: 300;
+        width: calc(100%/2 - 2px);
+        background: rgba(0, 0, 0, 0.1);
+        padding: 5px 0;
+        display: inline-block!important;
+        margin: 5px 0;
+        margin-left: 2px;
+        float: left;
+    }
+}
+
+/deep/ .mat-paginator-page-size-label,
+/deep/ .mat-paginator-range-label {
+    display: none;
+
+    & + div {
+        display: none!important;
+    }
+}
+
+/deep/ .mat-paginator-navigation-previous,
+/deep/ .mat-paginator-navigation-next {
+    background: $cyan!important;
+    border-radius: 0!important;
+    width: 20px!important;
+    height: 20px!important;
+    margin-left: 5px!important;
+
+    &[disabled] {
+        background: rgba(0, 255, 249, 0.3)!important;
+    }
+}
+
+.pagination {
+    height: 33px;
+    width: 100%;
+
+    li {
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &:hover {
+            span {
+                background: $cyan;
+            }
+        }
+
+        &.active {
+            span {
+                background: $cyan;
+            }
+        }
+    }
+
+    span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+    }
+}
+
+.mat-paginator {
+    background: none;
+}
+
+/deep/ .mat-paginator-navigation-previous span {
+    position: relative;
+    width: 100%;
+    display: block;
+    height: 100%;
+
+    &::after {
+        @include respond-to('medium') {
+            line-height: 18px;
+        }
+        content: '<';
+        color: $dark;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        text-align: center;
+        height: 20px;
+        line-height: 21px;
+        cursor: pointer;
+    }
+}
+
+/deep/ .mat-paginator-navigation-next span {
+     @include respond-to('medium') {
+            line-height: 18px;
+        }
+    position: relative;
+    width: 100%;
+    display: block;
+    height: 100%;
+    
+
+    &::after {
+        content: '>';
+        color: $dark;
+        position: absolute;
+        top: 0;
+        height: 20px;
+        line-height: 21px;
+        width: 20px;
+        left: 0;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.buttonsPublication {
+
+    @include respond-to('min-large') {
+        width: calc(100% - 41px);
+    }
+    @include respond-to('medium') {
+        bottom: 20px;
+        width: calc(100% - 21px);
+        right: 12px;
+        text-align: center;
+    }
+    @include respond-to('small') {
+        bottom: 10px;
+    }
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: calc(100% - 50px);
+}
+
+.promoInfo {
+    @include respond-to('min-large') {
+        font-size: $base-font-size + 2;
+    }
+    @include respond-to('medium') {
+        font-size: $base-font-size;
+    }
+    @include respond-to('small') {
+        margin-bottom: 10px;
+    }
+    font-size: $base-font-size + 8;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+    position: relative;
+    margin-bottom: 26px;
+
+    input {
+        @include respond-to('min-large') {
+            font-size: $base-font-size + 2;
+        }
+        @include respond-to('medium') {
+            padding: 5px 0;
+            margin-bottom: 10px;
+            font-size: $base-font-size;
+        }
+        background: none;
+        border: 0;
+        border-bottom: solid 2px $white;
+        color: $white;
+        padding: 0 0 10px 0;
+        font-weight: 300;
+        font-size: $base-font-size + 8;
+        border-radius: 0;
+        width: 100%;
+        display: inline-block;
+
+        &[readonly]{
+            border-bottom: solid 2px transparent;
+            width: calc(100% - 25px);
+            min-height: 30px;
+            overflow: visible;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+        }
+
+        &[readonly] + .editMode {
+            display: block;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .editMode {
+        @include respond-to('medium') {
+            top: 0px;
+        }
+        float: right;
+        cursor: pointer;
+        overflow: visible;
+        position: absolute;
+        top: -2px;
+        right: 0;
+        display: block;
+        display: none;
+
+        svg {
+            @include respond-to('medium') {
+                width: 16px;
+            }
+        }
+
+        &:hover  svg path {
+            fill: $cyan;
+        }
+    }
+}
+
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+}
+
+.loader {
+    @include respond-to('medium') {
+        margin: 35px auto;
+    }
+    @include respond-to('small') {
+        margin: 11px auto;
+    }
+    margin: 60px auto;
+    font-size: $base-font-size - 6;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #ffffff;
+    -webkit-transform:  translateX(-50%) translateY(-50%) translateZ(0);
+    -ms-transform:  translateX(-50%) translateY(-50%) translateZ(0);
+    transform:  translateX(-50%) translateY(-50%) translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform:  translateX(-50%) translateY(-50%) rotate(0deg);
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+        -webkit-transform:  translateX(-50%) translateY(-50%) rotate(360deg);
+        transform:  translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform:  translateX(-50%) translateY(-50%) rotate(0deg);
+        transform:  translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+        -webkit-transform:  translateX(-50%) translateY(-50%) rotate(360deg);
+        transform:  translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
+.uploadError {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $watermelon;
+    width: 100%;
+    padding: 5px 0;
+    background: rgba(0, 0 ,0 ,0.6);
+    text-align: center;
+}
+
+
+.activeTab{
+    background: rgba(0, 0, 0, 0.1);
+
+    &Name {
+        font-size: $base-font-size;
+        word-break: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 40px;
+        line-height: 40px;
+        font-weight: 300;
+        background: none;
+        border: 0;
+        max-width: 100%;
+        text-align: left;
+        padding-left: 50px;
+        color: $white;
+        text-transform: uppercase;
+        overflow: hidden;
+        display: block;
+    }
+}
+
+.createPromo /deep/ app-success-icon{
+    @include respond-to('extra-large') {
+        left: calc(50% + 150px);
+    }
+    @include respond-to('medium-large') {
+        left: 50%;
+    }
+    @include respond-to('medium') {
+        left: 50%;
+    }
+    position: fixed;
+    left: calc(50% + 186px);
+}
+
+.productsCatalog {
+    /deep/ .mat-tab-label {
+        @include respond-to('min-large') {
+            height: 60px;
+            line-height: 60px;
+            font-size: $base-font-size;
+            min-width: 120px;
+        }
+        @include respond-to('medium') {
+            font-size: $base-font-size;
+            display: none;
+            height: 40px;
+            line-height: 40px;
+            font-weight: 300;
+            background: none;
+            border: 0;
+            max-width: 100%;
+            text-align: left;
+            padding-left: 50px;
+
+        }
+
+        text-transform: uppercase;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-weight: 300;
+        letter-spacing: 0.6px;
+        color: $white;
+        font-size: $base-font-size + 2;
+        opacity: 1!important;
+        height: 80px;
+        min-width: 150px;
+        max-width: 220px;
+        word-break: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: inline-block;
+        line-height: 80px;
+        border-right: 1px solid rgba(87, 132, 152, 0.7);
+
+        &.mat-tab-label-active {
+            @include respond-to('medium') {
+                background: none;
+            }
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+
+
+    /deep/ .mat-tab-header,
+    /deep/ .mat-tab-label-container {
+        @include respond-to('medium') {
+            z-index: 3;
+            overflow: visible;
+            background: #0d232d;
+            width: 100%;
+            position: absolute;
+
+            .mat-tab-list {
+                width: 100%;
+            }
+        }
+    }
+
+    /deep/  .showLabels .mat-tab-label  {
+        @include respond-to('medium') {
+            display: block!important;
+
+            &-active {
+                display: none!important;
+            }
+        }
+    }
+
+    /deep/ .mat-tab-body-wrapper {
+        @include respond-to('medium') {
+            margin-top: 0;
+            padding-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        background-color: rgba(0, 0, 0, 0.3);
+        margin-top: 2px;
+    }
+
+    /deep/ .mat-ripple-element {
+        display: none!important;
+    }
+
+    /deep/ .mat-tab-body-content {
+        @include respond-to('min-large') {
+            padding: 14px 0 0 0;
+            min-height: calc(40vh)!important;
+        }
+        @include respond-to('medium') {
+            padding: 24px 0 0 0;
+        }
+        padding: 24px 0 0 20px;
+        min-height: calc(50vh)!important;
+        overflow: hidden!important;
+    }
+
+    /deep/  .mat-tab-labels {
+        @include respond-to('medium') {
+            display: block;
+            left: 40px;
+            z-index: 2;
+        }
+
+    }
+
+    /deep/ .mat-tab-header-pagination {
+        display: none!important;
+    }
+
+    /deep/ .mat-expansion-panel-header {
+        @include respond-to('medium') {
+            height: 27px!important;
+        }
+        padding: 0 0 0 17px!important;
+        font-family: $base-font-sans-serif!important;
+    }
+
+    /deep/ .mat-expansion-panel-body {
+        @include respond-to('medium') {
+            padding: 0 0 0 10px!important;
+        }
+        padding: 0 0 0 15px!important;
+    }
+
+    /deep/ .mat-expansion-panel {
+        box-shadow: none!important;
+        margin-right: 25px!important;
+        &.mat-expanded {
+            .titleCategory:before {
+                content: '';
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                display: inline-block;
+                border-top: 7px solid $white;
+                margin-right: 20px;
+            }
+        }
+    }
+}

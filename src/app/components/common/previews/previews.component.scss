@@ -1,0 +1,85 @@
+@import '~admin/scss/base/_variables.scss';
+
+.previewsList {
+    @include respond-to('small') {
+        
+    }
+    @include respond-to('medium-landscape') {
+        
+    }
+    flex-wrap: wrap;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.previewForChoosing {
+
+    @include respond-to('small') {
+        
+        margin-right: 10px;
+        margin-bottom: 10px;
+            max-width: 147px;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+    
+    @media (orientation : landscape ) and 
+    (max-width: 767px)  {
+        max-width: 139px;
+    }
+    @media (orientation : landscape ) and 
+       (max-width: 992px)  {
+          &:nth-child(2n) {
+            margin-right: 10px;
+        }
+    }
+    @media (orientation : portrait ) and 
+       (max-width: 1024px)  {
+          width: 45%;
+          &:nth-child(2n) {
+            margin-right: 10px;
+        }
+    }
+
+
+    background-size: cover;
+    max-width: 159px;
+    min-width: 139px;
+    height: 90px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    border: 2px solid transparent;
+    background-repeat: no-repeat;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.selected {
+        border: 2px solid $cyan;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 0 solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid $cyan;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+
+h3 {
+    @include respond-to('medium') {
+        font-size: $base-font-size - 2;
+        margin-bottom: 5px;
+    }
+    font-size: $base-font-size + 6;
+    font-weight: 300;
+}

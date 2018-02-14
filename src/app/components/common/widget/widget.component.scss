@@ -1,0 +1,12 @@
+@import '~admin/scss/base/_variables.scss';
+
+.header {
+    background: rgba(0, 0, 0, 0.1);
+    color: $white;
+    padding: 29px 35px;
+}
+
+.widgetBody {
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 2px;
+}

@@ -1,0 +1,21 @@
+@import '../auth.component';
+
+:host {
+    @include respond-to('small') {
+        min-width: 100%;
+    }
+    min-width: 480px;
+    margin: 0 auto;
+    display: block;
+    align-self: center;
+}
+
+.regWrap {
+    @include respond-to('small') {
+        background: rgba(0, 0, 0, 0.4);
+    }
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
+

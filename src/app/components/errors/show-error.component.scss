@@ -1,0 +1,8 @@
+@import '../../app.component.scss';
+.errorLine {
+    color: $watermelon;
+
+    &:first-letter {
+        text-transform: uppercase;;
+    }
+}

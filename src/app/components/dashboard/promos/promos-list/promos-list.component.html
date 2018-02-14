@@ -1,0 +1,66 @@
+<div class="stepForPromo" >
+    <div class="stepBlock textCenter active" *ngIf="!storCounter" [routerLink]="['/admin/dashboard/stores']">
+        <div class="stepBlockWrap">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="115" viewBox="0 0 120 115">
+                    <g fill="#1E5F6F" fill-rule="nonzero">
+                        <path d="M107.5 0h-95C5.605 0 0 5.61 0 12.5v90c0 6.89 5.605 12.5 12.5 12.5h95c6.895 0 12.5-5.61 12.5-12.5v-90C120 5.61 114.395 0 107.5 0zm7.5 102.5c0 4.135-3.365 7.5-7.5 7.5h-95c-4.135 0-7.5-3.365-7.5-7.5V25h110v77.5zm0-82.5H5v-7.5C5 8.365 8.365 5 12.5 5h95c4.135 0 7.5 3.365 7.5 7.5V20z"/>
+                        <circle cx="12.5" cy="12.656" r="2.5"/>
+                        <circle cx="22.5" cy="12.656" r="2.5"/>
+                        <circle cx="32.5" cy="12.656" r="2.5"/>
+                        <path stroke="#1E5F6F" stroke-width="1.7" d="M82.971 63.143c0-.027.027-.038.027-.065 0-.015-.015-.027-.018-.04.003-.032.01-.059.01-.092l-2.712-16.272a.806.806 0 0 0-.794-.674H41.52a.804.804 0 0 0-.796.674L38 63.078a6.22 6.22 0 0 0 2.715 5.135v21.981c0 .446.357.806.805.806h37.964c.446 0 .806-.36.806-.806V68.201a6.327 6.327 0 0 0 2.681-5.058zm-3.89 3.907h-.008a4.55 4.55 0 0 1-1.043.446c-.047.015-.092.032-.138.044-.365.1-.741.152-1.12.156a4.616 4.616 0 0 1-4.536-3.81h9.065a4.614 4.614 0 0 1-2.22 3.164zm-8.542-4.777h-9.232V47.615h9.232v14.658zm-10.848 0h-9.235V47.615h9.235v14.658zm-.082 1.611a4.614 4.614 0 0 1-4.534 3.81 4.619 4.619 0 0 1-4.536-3.81h9.07zm10.847 0a4.613 4.613 0 0 1-4.533 3.81 4.616 4.616 0 0 1-4.529-3.81h9.062zm10.794-1.611h-9.096V47.615h6.641l2.455 14.658zM42.2 47.615h6.645v14.658h-9.083L42.2 47.615zm-2.52 16.27h9.082a4.614 4.614 0 0 1-4.532 3.81 4.38 4.38 0 0 1-1.125-.157c-.043-.012-.085-.027-.129-.037a4.793 4.793 0 0 1-1.052-.45c-.006-.005-.02-.002-.027-.008a4.547 4.547 0 0 1-2.218-3.159zm24.337 25.503V74.733h9.235v14.655h-9.235zm14.66-20.39v20.39h-3.81V73.926a.807.807 0 0 0-.81-.806H63.21a.807.807 0 0 0-.809.806V89.39H42.328V69c.043.015.088.009.132.024.563.166 1.15.286 1.77.286a6.23 6.23 0 0 0 5.42-3.164 6.241 6.241 0 0 0 5.424 3.164 6.232 6.232 0 0 0 5.421-3.167 6.238 6.238 0 0 0 5.425 3.167 6.244 6.244 0 0 0 5.425-3.164 6.236 6.236 0 0 0 5.425 3.164c.618 0 1.204-.12 1.767-.29.047-.016.093-.007.14-.022zM56.986 83.964H47.75v-9.229h9.235v9.229zm.805-10.845H46.944a.806.806 0 0 0-.81.806v10.848c0 .445.36.805.81.805H57.79c.446 0 .81-.36.81-.805V73.925a.807.807 0 0 0-.81-.806z"/>
+                    </g>
+                </svg>
+            </div>
+            <h3>STEP 1</h3>
+            <p>ADD YOUR FIRST STORE</p>
+        </div>
+    </div>
+
+    <div class="stepBlock textCenter"  *ngIf="!promosStep" [ngClass]="{'active' : (storCounter > 0)}" [routerLink]="(storCounter > 0) ? ['/admin/dashboard/promos/new']: null">
+        <div class="stepBlockWrap">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="116" viewBox="0 0 120 116">
+                    <g fill="#1E5F6F" fill-rule="nonzero">
+                        <path d="M107.5.156h-95C5.605.156 0 5.766 0 12.656v90c0 6.89 5.605 12.5 12.5 12.5h95c6.895 0 12.5-5.61 12.5-12.5v-90c0-6.89-5.605-12.5-12.5-12.5zm7.5 102.5c0 4.135-3.365 7.5-7.5 7.5h-95c-4.135 0-7.5-3.365-7.5-7.5v-77.5h110v77.5zm0-82.5H5v-7.5c0-4.135 3.365-7.5 7.5-7.5h95c4.135 0 7.5 3.365 7.5 7.5v7.5z"/>
+                        <circle cx="12.5" cy="12.656" r="2.5"/>
+                        <circle cx="22.5" cy="12.656" r="2.5"/>
+                        <circle cx="32.5" cy="12.656" r="2.5"/>
+                        <path d="M83.74 65.486l-35-20a2.498 2.498 0 0 0-2.495.005A2.51 2.51 0 0 0 45 47.656v40c0 .895.475 1.715 1.245 2.165.385.225.82.335 1.255.335.43 0 .855-.11 1.24-.33l35-20a2.5 2.5 0 0 0 0-4.34zM50 83.346v-31.38l27.46 15.69L50 83.346z"/>
+                    </g>
+                </svg>
+            </div>
+            <h3>STEP 2</h3>
+            <p>ADD YOUR FIRST PROMO</p>
+        </div>
+    </div>
+</div>
+
+<div class="promoList"
+     infinite-scroll
+     [infiniteScrollDistance]="scrollDistance"
+     [infiniteScrollThrottle]="throttle"
+     (scrolled)="onScrollDown($event)"
+     >
+    <div *ngFor='let promo of promoList; let i = index' class="promoItem">
+        <a [routerLink]="['edit', promo._id]">
+            <div class="preview" [style.backgroundImage]="'url('+ promo.url + ')'">
+                <span class="promoStatus">{{promo.status}}</span>
+            </div>
+        </a>
+        <div class="meta">
+            <h3> <a [routerLink]="['edit', promo._id]">{{promo.title}}</a></h3>
+            <div class="">
+                <span class="itemsCount" *ngIf="promo?.products.length">{{promo?.products.length}} items</span>
+                <span class="delete" (click)="deleteItem(promo._id, i)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="15" viewBox="0 0 11 15">
+                        <path fill="#00FFF9" fill-rule="nonzero" d="M0 1.598h10.328v.492H0v-.492zM9.14 15H1.19L.7 2.595l.492-.019.47 11.932h7.004l.453-11.923.492.02L9.139 15zm-7.05-1.66H7.04v.492H2.09v-.492zm5.41 0h.738v.492H7.5v-.492zM3.074 3.258h.492v9.13h-.492v-9.13zm1.813 0h.492v9.13h-.492v-9.13zm1.875 0h.492v9.13h-.492v-9.13zM5.41.707h1.598v.492H3.32V.707h1.598V0h.492v.707z" opacity=".5"/>
+                    </svg>
+                </span>
+                <span class="date">
+                    {{promo.createdAt | date: 'yyyy/MM/dd'}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

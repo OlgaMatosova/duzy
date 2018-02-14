@@ -1,0 +1,24 @@
+<div  [attr.id]="id + 'scrollable'" class='scrollable'>
+    <div *ngFor="let item of productList | sortBy; let i = index">
+        <mat-expansion-panel [expanded]="i == 0" >
+            <mat-expansion-panel-header>
+                <mat-panel-title class="titleCategory">
+                    {{item.key}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let products of item.value;" class="productItem" [class.added]="products.isActive" >
+                <app-product-item [products]="products['variants']" [currency]="currency"></app-product-item>
+                <div class="addItem"  (click)="!products.isActive && addToPromo(products)">
+                     <svg *ngIf="!products.isActive" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#1E5F6F" fill-rule="evenodd" d="M23.616 9.36v4.944h-9.312v9.36H9.312v-9.36H0V9.36h9.312V0h4.992v9.36z"/>
+                    </svg>
+                    <svg *ngIf="products.isActive" xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16">
+                        <path fill="#FFF" fill-rule="evenodd" stroke="#FFF" d="M8.143 14.857L1 7.714l2-2 5.143 5.143L19 0l2 2z"/>
+                    </svg>
+
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </div>
+</div>

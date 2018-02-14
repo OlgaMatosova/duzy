@@ -1,0 +1,76 @@
+@import '../auth.component.scss';
+
+:host {
+    @include respond-to('small') {
+        min-width: 100%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    background: rgba(0, 0, 0, 0.2);
+    min-width: 480px;
+    margin: 0 auto;
+    display: block;
+    align-self: center;
+}
+
+.submitBtnWrap {
+    margin-top: 33px;
+}
+
+.forgotPassLink {
+    @include respond-to('small') {
+        margin-bottom: 18px;
+    }
+    text-align: right;
+    font-size:  $base-font-size - 2;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255,255,0.5);
+    margin-top: -14px;
+    margin-bottom: 15px;
+
+    a {
+        @include respond-to('small') {
+            color: rgba(255,255,255, 0.7);
+        }
+        color: $white;
+        color: rgba(255, 255,255,0.5);
+        text-decoration: none;
+    }
+}
+
+.rememberMe {
+    @include respond-to('small') {
+        margin-top: 17px;
+        margin-bottom: 5px;
+    }
+    margin-top: 52px;
+
+
+    /deep/ .mat-checkbox-inner-container {
+        width: 10px;
+        height: 10px;
+    }
+
+    /deep/ .mat-checkbox-input {
+        opacity: 0;
+        width: 10px;
+        height: 10px;
+    }
+
+    /deep/ .mat-checkbox-checked {
+        .mat-checkbox-inner-container {
+            background: $greeny-blue;
+            border-color: $greeny-blue;
+        }
+
+        .mat-checkbox-frame {
+            display: none;
+        }
+
+        svg {
+            path {
+                stroke: #142227!important;
+            }
+        }
+    }
+}

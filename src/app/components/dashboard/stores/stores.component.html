@@ -1,0 +1,7 @@
+<span (click)="startHints()">Start interactive tutorial for this page</span>
+<app-add-store  (createNewStore)="createNewStore($event)" [showSuccess]="showSuccess" [showServerError]='showServerError' [clearForm]="clearForm"></app-add-store>
+<div class="storesWrap">
+    <div *ngFor="let store of storeList; let i = index" class="store">
+        <app-store [store]="store" [index]="i" (deleteStore)="deleteStore($event)"></app-store>
+    </div>
+</div>

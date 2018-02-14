@@ -1,0 +1,232 @@
+@import '~admin/scss/base/_variables.scss';
+
+.profileEditHeader {
+    @include respond-to('medium') {
+        padding: 10px;
+    }
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 29px 35px;
+    margin-bottom: 2px;
+    position: relative;
+
+    h3 {
+        @include respond-to('medium') {
+            font-size: $base-font-size;
+        }
+        text-transform: capitalize;
+        color: $white;
+        font-size: $base-font-size + 2;
+        font-weight: 300;
+        margin: 0;
+    }
+
+    .editIcon {
+        @include respond-to('medium') {
+            top: 9px;
+            right: 15px;
+        }
+        position: absolute;
+        top: 29px;
+        right: 35px;
+        cursor: pointer;
+
+        svg {
+            @include respond-to('medium') {
+                width: 14px;
+            }
+        }
+
+        &:hover {
+            svg {
+                path{
+                    fill: $white;
+                    opacity: 1;
+                }
+
+            }
+        }
+    }
+}
+
+.editProfileWrap {
+    @include respond-to('medium') {
+        padding: 15px 10px;
+    }
+    background: rgba(0, 0, 0, 0.3);
+    padding: 29px 35px;
+
+    .flexWrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .form-group {
+        @include respond-to('medium') {
+            flex-basis: 100%;
+            margin-right: 0;
+        }
+        width: 100%;
+        flex-basis: calc(80%/3 );
+        position: relative;
+        margin-right: 9.5%;
+
+        &:last-child {
+            @include respond-to('medium') {
+                flex-basis: 100%;
+            }
+            margin-right: 0;
+            flex-basis: calc(80%/3);
+        }
+    }
+
+    label {
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        display: block;
+        font-size: $base-font-size - 4;
+    }
+
+    input {
+        @include respond-to('medium') {
+            padding: 5px 0;
+            margin-bottom: 10px;
+        }
+        background: none;
+        border: 0;
+        border-bottom: solid 2px $white;
+        color: $white;
+        padding: 14px 0;
+        width: 100%;
+        font-size: $base-font-size;
+        border-radius: 0;
+        &[readonly]{
+            border-bottom: solid 2px transparent;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .saveProfile {
+        @include respond-to('medium') {
+            margin-top: 20px;
+        }
+        width: 100%;
+        margin-top: 40px;
+
+        /deep/ .mat-button {
+            @include respond-to('min-large') {
+                min-width: 100px!important;
+            }
+        }
+    }
+}
+
+.textRight {
+    text-align: right;
+}
+
+.errorWrap {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 53px;
+    position: relative;
+
+    .material-icons {
+        position: absolute;
+        top: 15px;
+        left: 27px;
+        color: $watermelon;
+        font-size: $base-font-size + 2;
+    }
+}
+
+.successWrap {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 53px;
+    position: relative;
+    color: #00ff99;
+    margin-top: -30px;
+    font-size: $base-font-size;
+
+    .material-icons {
+        position: absolute;
+        top: 17px;
+        left: 27px;
+        color: #00ff99;
+        font-size: $base-font-size  + 1;
+    }
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    font-size: $base-font-size - 2;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    font-size: $base-font-size - 2;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    font-size: $base-font-size - 2;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    font-size: $base-font-size - 2;
+}
+
+app-button {
+    @include respond-to('medium') {
+        margin-left: 5px;
+    }
+    margin-left: 15px;
+}
+
+input:-webkit-contacts-auto-fill-button {
+  visibility: hidden!important;
+  display: none!important;
+  pointer-events: none!important;
+  position: absolute!important;
+  right: 0!important;
+  visibility: hidden!important;
+}
+
+
+input::-webkit-textfield-decoration-contaiter,
+input::-webkit-caps-lock-indicator,
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-contacts-auto-fill-button {
+    display: none!important;
+    opacity: 0!important;
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+    display:none!important;
+}
+
+.changeTypePass {
+    @include respond-to('small') {
+        opacity: 0.7;
+        top: 23px;
+    }
+    position: absolute;
+    top: 33px;
+    right: 0;
+    color: $white;
+    opacity: 0.4;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    i {
+        font-size: $base-font-size - 3;
+    }
+}

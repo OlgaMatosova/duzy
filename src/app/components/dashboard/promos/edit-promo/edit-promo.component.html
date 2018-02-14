@@ -1,0 +1,113 @@
+<div class="createPromo" [ngClass]="{ 'mobileHide': mobileAddItem }">
+      <app-success-icon *ngIf="showSuccess" class="show"></app-success-icon>
+      <ng4-files-drop *ngIf="editPreview" [ngClass]="{'hidden' : (percent < 100) || convertVideoMessage}" (filesSelect)="filesSelect($event)" class="dragDrop">
+        <div class="dragDropWrapper"  [ngClass]="{wrongFile : wrongFile['length']}">
+         <ng4-files-click (filesSelect)="filesSelect($event)">
+                <app-dragicon></app-dragicon>
+                <h3 *ngIf="!wrongFile['length']" class="mobileShow">BROWSE a file</h3>
+                <h3 *ngIf="wrongFile['length']">This file format is not allowed</h3>
+                <h3 class="mobileHide" *ngIf="!wrongFile['length']">Drag and Drop a file</h3>
+                <p class="mobileHide" *ngIf="!wrongFile['length']">or <b>choose from your PC</b></p>
+                <p  *ngIf="wrongFile['length']">Please make sure you use correct video/image file format</p>
+                <div class="dragIcons mobileHide" *ngIf="!wrongFile['length']">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="46" viewBox="0 0 50 46">
+                        <g fill="#1E5F6F" fill-rule="nonzero">
+                            <path d="M44.792.033H5.208A5.216 5.216 0 0 0 0 5.24v35.417a5.216 5.216 0 0 0 5.208 5.208h39.584A5.216 5.216 0 0 0 50 40.658V5.24A5.215 5.215 0 0 0 44.792.033zm3.125 40.625a3.129 3.129 0 0 1-3.125 3.125H5.208a3.129 3.129 0 0 1-3.125-3.125V10.449h45.834v30.209zm0-32.292H2.083V5.24a3.129 3.129 0 0 1 3.125-3.125h39.584a3.129 3.129 0 0 1 3.125 3.125v3.125z"/>
+                            <circle cx="5.208" cy="5.241" r="1.042"/>
+                            <circle cx="9.375" cy="5.241" r="1.042"/>
+                            <circle cx="13.542" cy="5.241" r="1.042"/>
+                            <path d="M33.333 18.75H16.667c-.575 0-1.042.467-1.042 1.042v14.583c0 .575.467 1.042 1.042 1.042h16.666c.575 0 1.042-.467 1.042-1.042V19.792c0-.575-.467-1.042-1.042-1.042zm-1.041 14.583H17.708V30.64l2.965-2.965 3.462 5.194c.292.437.865.59 1.334.354l3.7-1.85 3.123 1.563v.397zm0-2.729l-2.659-1.329a1.046 1.046 0 0 0-.93 0l-3.345 1.673-3.656-5.486a1.044 1.044 0 0 0-1.604-.158l-2.39 2.39v-6.86h14.584v9.77z"/>
+                            <circle cx="28.158" cy="25.033" r="2.083"/>
+                        </g>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="48" viewBox="0 0 50 48">
+                        <g fill="#1E5F6F" fill-rule="nonzero">
+                            <path d="M44.792.065H5.208A5.214 5.214 0 0 0 0 5.273v37.5a5.214 5.214 0 0 0 5.208 5.209h39.584A5.214 5.214 0 0 0 50 42.773v-37.5A5.214 5.214 0 0 0 44.792.065zm3.125 42.708a3.129 3.129 0 0 1-3.125 3.125H5.208a3.129 3.129 0 0 1-3.125-3.125V10.482h45.834v32.291zm0-34.375H2.083V5.273a3.129 3.129 0 0 1 3.125-3.125h39.584a3.129 3.129 0 0 1 3.125 3.125v3.125z"/>
+                            <circle cx="5.208" cy="5.273" r="1.042"/>
+                            <circle cx="9.375" cy="5.273" r="1.042"/>
+                            <circle cx="13.542" cy="5.273" r="1.042"/>
+                            <path d="M34.892 27.286l-14.584-8.333a1.041 1.041 0 0 0-1.558.904v16.666a1.044 1.044 0 0 0 1.042 1.042c.179 0 .356-.046.516-.137l14.584-8.334a1.042 1.042 0 0 0 0-1.808zm-14.059 7.442V21.653l11.442 6.537-11.442 6.538z"/>
+                        </g>
+                    </svg>
+                </div>
+                <p *ngIf="!wrongFile['length']" class="mobileHide"><small><b>Quick Tip</b>: For better experience please use <b>16:9</b> aspect ratio images</small></p>
+            </ng4-files-click>
+        </div>
+    </ng4-files-drop>
+
+    <div class="preview textCenter "  [ngClass]="{'hasPreview' : (percent == 100)}">
+        <app-progress *ngIf="(percent < 100) && !convertVideoMessage" [percent]="percent"></app-progress>
+        <span class="promoStatus" *ngIf="percent == 100 && !convertVideoMessage">{{promo.status}}</span>
+        <img  *ngIf="(percent == 100)" [attr.src]="promo?.url" alt=" " />
+        <div *ngIf="showUploadError" class="uploadError"> The file convention was broken</div>
+        <div class="loader" *ngIf="convertVideoMessage && (percent == 100) && !showUploadError">Loading...</div>
+        <p class="convertVideo textCenter" *ngIf="convertVideoMessage && (percent == 100) && !showUploadError">Please wait, video conversion is in progress.</p>
+    </div>
+    <div class="promoItems" [ngClass]="{'slowMode' : !(!getLink && !editPreview)}"   id="promoItems">
+        <div class="promoInfo">
+            <input
+                [attr.id]="id"
+                type="text"
+                class="form-control"
+                [(ngModel)]="promo.title"
+                name="title"
+                #title="ngModel"
+                readonly="readonly"
+                required>
+                <span class="editMode" (click)="editMeta()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23">
+                        <path fill="#FFF" fill-rule="nonzero" d="M16.188 1.27a.345.345 0 0 0-.484.086l-8.02 11.522a.346.346 0 0 0-.06.149l-.529 3.635a.348.348 0 0 0 .511.356l3.226-1.758a.341.341 0 0 0 .119-.107l8.02-11.522a.348.348 0 0 0-.086-.484l-2.697-1.878zm-5.761 13.418l-2.543 1.386.417-2.866L16.076 2.04l2.126 1.48-7.775 11.17zm8.013-6.455c.192 0 .348.156.348.348v11.673c0 1.13-.92 2.05-2.05 2.05H2.05c-1.13 0-2.049-.92-2.049-2.05V5.566c0-1.13.92-2.05 2.05-2.05h8.657a.348.348 0 1 1 0 .696H2.05c-.746 0-1.353.607-1.353 1.354v14.688c0 .747.607 1.354 1.353 1.354h14.69c.746 0 1.353-.607 1.353-1.354V8.581c0-.192.155-.348.348-.348zm1.405-6.314a.348.348 0 1 1-.386.58L16.669.637a.348.348 0 1 1 .385-.58l2.791 1.861z"/>
+                    </svg>
+                </span>
+        </div>
+        <app-previews *ngIf="editPreview"  [previewsList]="previewsList" (changePreview)="changePreview($event)"></app-previews>
+        <div *ngIf="!getLink && !editPreview" class='promoItemsWrapper'>
+            <p class="btns">You have
+                <span class="itemsCount" *ngIf="promo?.products.length > 0">{{promo?.products.length}} items</span>
+                <span *ngIf="promo?.products.length <=0">no items</span> attached to this promo  </p>
+            <span class="mobileShow asTab" *ngIf="published" (click)="links()">Links</span>
+            <span *ngIf="promo?.products.length > 0 && showAll" class="clear asTab" (click)="openDialog()">Clear</span>
+            <app-promo-products  *ngIf="showAll" (removeItem)="removeItem($event)" [products]="promo?.products" [storeProducts]="shopsList[activeTab]?.products"></app-promo-products>
+        </div>
+        <div *ngIf="getLink && !editPreview" >
+            <app-promo-code [id]="id"></app-promo-code>
+        </div>
+        <div class="textRight buttonsPublication">
+            <button  *ngIf="!getLink && !editPreview" class="mobileShow mobileAddItem" (click)="(mobileAddItem = true )  && hideDragDrop(true)">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                        <path fill="#FFF" fill-rule="evenodd" d="M10 3.955v2.09H6.057V10H3.943V6.045H0v-2.09h3.943V0h2.114v3.955z"/>
+                    </svg>
+                </span> Add Items
+            </button>
+            <app-button class="editPreviewBtn" *ngIf="editPreview" (click)="closeEditMode()" >back</app-button>
+            <app-button *ngIf="published && !editPreview" (click)="links()" [ngClass]="{'mobileHide' : !getLink}">{{getLink ? 'back' : 'links'}}</app-button>
+
+            <app-button (click)="promo.products.length && statusReady && editStatus.isSaved && publish()"
+                *ngIf="!published && !editPreview" [ngClass]="{ 'show': promo?.products.length }"  [styleBtn]="'right mobileHide btnFull'" [disabled]="(!promo?.products.length || !statusReady || (!editStatus?.isSaved || published)) ">Publish</app-button>
+            <app-button *ngIf="!editPreview && !getLink" (click)="(promo.products.length || !published) && save()"  [ngClass]="{ 'show': promo?.products.length }"  [disabled]="(!promo.products.length && published)"  [styleBtn]="'right mobileHide'" >save</app-button>
+            <app-button *ngIf="!editPreview && !getLink" (click)="deletePromo()" [styleBtn]="'mobileHide right'">delete</app-button>
+        </div>
+    </div>
+</div>
+<div class='productsCatalog mobileHide' [ngClass]="{ 'show': mobileAddItem }">
+    <div (click)=" promo.products.length <= 0 && (showLabels = !showLabels) " class="mobileShow activeTab">
+        <span  class="mobileShow selectDots">
+            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="18" viewBox="0 0 4 18">
+                <path fill="#FFF" fill-rule="nonzero" d="M2 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+            </svg>
+        </span>
+        <span class="activeTabName">{{shopsList[activeTab]?.name}}</span>
+    </div>
+    <mat-tab-group [ngClass]="{'showLabels' : showLabels}" [selectedIndex]="activeTab" (selectedTabChange)="tabChanged($event)" >
+        <mat-tab *ngFor="let shop of shopsList; let idx = index" label="{{shop.name}}" isActive [disabled]='promo?.products.length > 0'>
+            <div class="dark" >
+                <div *ngIf="idx == activeTab" >
+                    <div *ngIf="shopError">{{shopError}}</div>
+                    <app-products [currency]=[currency] [shop]=[shop._id] [products]="shop.products" [id]="promo._id"></app-products>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <app-button class="mobileShow backToPromo" (click)="(mobileAddItem = false) && hideDragDrop(false)">Back</app-button>
+
+</div>

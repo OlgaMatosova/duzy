@@ -1,0 +1,61 @@
+@import '../../app.component.scss';
+:host {
+    @include respond-to('medium') {
+        background-image: url("/admin/images/footer-dots-main-auth.png") ,  linear-gradient(to top, $steel-blue, $dull-blue 49%,$dark-blue-grey);
+        background-position:  50% bottom,  right;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    @media (orientation : landscape ) and 
+       (max-width: 992px)  {
+        background-image: linear-gradient(to top, $steel-blue, $dull-blue 49%,$dark-blue-grey);
+        background-position: right;
+    }
+    background-image: url("/admin/images/footer-dots-main-auth.png") , url("/admin/images/header-dots-main.png"), linear-gradient(to top, $steel-blue, $dull-blue 49%,$dark-blue-grey);
+    background-repeat:  no-repeat, no-repeat, no-repeat;
+    background-position:  50% 100%, 50% 0, right;
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-size: auto;
+}
+
+.contentWrapper {
+    @include respond-to('extra-large') {
+        width: calc(100% - 272px);
+        padding: 16px 30px;
+    }
+    @include respond-to('medium-large') {
+        width: calc(100% - 234px);
+    }
+    @include respond-to('medium') {
+        width: 100%;
+        position: relative;
+        padding: 16px 20px;
+    }
+    width: calc(100% - 332px);
+    padding: 36px 40px;
+
+    .dashboardHeader {
+        display: block;
+        margin-bottom: 35px;
+        overflow: hidden;
+    }
+}
+
+.logo {
+    @include respond-to('medium-large') {
+        svg {
+            width: 150px;
+        }
+    }
+    @include respond-to('medium') {
+        display: none;
+    }
+    float: right;
+}

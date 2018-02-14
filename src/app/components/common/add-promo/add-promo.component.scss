@@ -1,0 +1,40 @@
+@import '~admin/scss/base/_variables.scss';
+:host {
+    @include respond-to('medium') {
+        top: -55px;
+    }
+    position: absolute;
+    right: -26px;
+    width: 70px;
+    height: 70px;
+    top: -83px;
+    background: $cyan;
+    border: 5px solid $greeny-blue;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    z-index: 2;
+
+    &:active,
+    &:focus {
+        cursor: pointer;
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        outline: none;
+        background: $greeny-blue;
+
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+    }
+
+    svg {
+        vertical-align: middle;
+        display: inline-block;
+    }
+}

@@ -1,0 +1,51 @@
+<mat-tab-group (selectedTabChange)="tabChanged($event)" #tabGroup>
+    <mat-tab label="Shopify">
+        <app-success-icon *ngIf="showSuccess" class="show"></app-success-icon>
+        <div class="tabWrap">
+            <div class="formWrap"  [ngClass]="{showing: closeTips}">
+                <form class="formForm" (ngSubmit)="addStoreF.valid && addStore()"
+                    #addStoreF="ngForm" novalidate>
+                    <div class="form-group storeName" ngModelGroup="storeName" [ngClass]="{'has-error': addStoreF.submitted && !storeName.valid }">
+                         <label class="label" for="storeName">ENTER YOUR STORE NAME</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="storeName"
+                            [(ngModel)]="store.name"
+                            name="storeName"
+                            maxlength="60"
+                            #storeName="ngModel"
+                            required>
+                        <span class="tips" [ngClass]="{active: isActive('nameTip')}" (click)="showTip('nameTip')"><i class="material-icons">help</i></span>
+                    </div>
+                    <div class="form-group storeApiKey" ngModelGroup="storeApiKey" [ngClass]="{ 'has-error': addStoreF.submitted && !storeApiKey.valid }">
+                        <label class="label" for="storeApiKey">ENTER YOUR Storefront access token</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="storeApiKey"
+                            [(ngModel)]="store.accessToken"
+                            name="storeApiKey"
+                            #storeApiKey="ngModel"
+                            required>
+                        <span class="tips" [ngClass]="{active: isActive('apiTip')}" (click)="showTip('apiTip')"><i class="material-icons">help</i></span>
+                    </div>
+                    <p class="textRight submitBtnWrap"><app-button><span>ADD STORE</span></app-button></p>
+                </form>
+            </div>
+            <div class="tipsWrap"  [ngClass]="{showing: closeTips}">
+                {{tip}}
+                <div class="mobileShow textCenter tipsControl"><app-button (click)="closeTips=!closeTips"><span>ok</span></app-button></div>
+            </div>
+        </div>
+        <div [@popOverState]="checkValidity(storeName, storeApiKey, addStoreF)" class="errorWrap">
+            <i class="material-icons">error</i>
+            <show-errors [control]="storeName" [form]="addStoreF"></show-errors>
+            <show-errors [form]="addStoreF" [control]="storeApiKey"></show-errors>
+            <div class="errorLine" *ngIf="showServerError">{{showServerError}}</div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+
+

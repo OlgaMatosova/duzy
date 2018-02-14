@@ -1,0 +1,60 @@
+<div  *ngIf="!regDone" class="regWrap">
+    <form (ngSubmit)="registerF.valid && onRegister()" class="authForm" #registerF="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': registerF.submitted && !login.valid }">
+            <label class="label" for="email">Email</label>
+            <input
+                type="text"
+                class="form-control"
+                id="email"
+                [(ngModel)]="user.email"
+                #login="ngModel"
+                name="email"
+                pattern="^\S+@\S+$"
+                required>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': registerF.submitted && !password.valid }">
+            <label class="label" for="">Password</label>
+            <input
+                [type]="showPassword ? 'text' : 'password'"
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                [(ngModel)]="user.password"
+                required
+                maxlength="30"
+                minlength="8"
+                validateEqual="confirmPassword"
+                reverse="true"
+                #password="ngModel">
+            <span class="changeTypePass" (click)="showPassword = !showPassword"><i class="material-icons">{{ (showPassword ? 'visibility' : 'visibility_off')}}</i></span>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': registerF.submitted && !confirmPassword.valid }">
+            <label class="label" for="">Confirm password</label>
+            <input
+                [type]="showConfPassword ? 'text' : 'password'"
+                type="password"
+                class="form-control"
+                name="confirmPassword"
+                [ngModel]="user.confirmPassword"
+                required
+                maxlength="30"
+                minlength="8"
+                validateEqual="password"
+                reverse="false"
+                #confirmPassword="ngModel">
+            <span class="changeTypePass" (click)="showConfPassword = !showConfPassword"><i class="material-icons">{{ (showConfPassword ? 'visibility' : 'visibility_off')  }}</i></span>
+        </div>
+        <p class="textCenter submitBtnWrap"><app-button><span>sign up</span></app-button></p>
+        <p class="regLink textCenter">Already on Düzy? <a class="runLineLink" [routerLink]="['/admin/login']"><b>Log in</b></a></p>
+    </form>
+
+    <div [@popOverState]="checkValidity(login, password, confirmPassword, registerF)" class="errorWrap">
+        <i class="material-icons">error</i>
+        <show-errors [control]="login" [form]="registerF"></show-errors>
+        <show-errors [form]="registerF" [control]="password"></show-errors>
+        <show-errors [form]="registerF" [control]="confirmPassword"></show-errors>
+        <div class="errorLine" *ngIf="show">{{serverError}}</div>
+    </div>
+</div>
+<register-confirm *ngIf="regDone"></register-confirm>

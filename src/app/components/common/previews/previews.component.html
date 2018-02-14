@@ -1,0 +1,5 @@
+<h3 *ngIf="previewsList['length']>0">Choose preview image</h3>
+<div class="previewsList">
+    <div *ngFor="let preview of previewsList" [style.backgroundImage]="'url('+ preview + ')'" class="previewForChoosing selectedPreview" (click)="chooseImage(preview)" [class.selected]="preview === selectedPreview">
+    </div>
+</div>

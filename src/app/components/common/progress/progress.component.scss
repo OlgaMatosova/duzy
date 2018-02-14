@@ -1,0 +1,51 @@
+@import '~admin/scss/base/_variables.scss';
+
+.progressWrap {
+    @include respond-to('medium') {
+        svg {
+            width: 170px;
+        }
+    }
+    position: relative;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    &:first-child {
+        @include respond-to('medium') {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        margin-bottom: 56px;
+        margin-top: 51px;
+    }
+}
+
+.progress {
+    transform: rotate(-90deg);
+}
+
+.progress__meter,
+.progress__value {
+    fill: none;
+}
+
+.progress__meter {
+    stroke:  $dark-green-blue;
+}
+
+.progress__value {
+    stroke: $cyan;
+}
+
+.percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:  $cyan;
+    font-size: $base-font-size + 8;
+}

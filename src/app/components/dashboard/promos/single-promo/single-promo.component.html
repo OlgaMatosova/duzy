@@ -1,0 +1,78 @@
+<div class="createPromo" [ngClass]="{ 'mobileHide': mobileAddItem }">
+     <app-success-icon *ngIf="showSuccess" class="show"></app-success-icon>
+     <div class="preview textCenter" [ngClass]="{'hasPreview' : (percent == 100)}">
+        <app-progress *ngIf="(percent < 100)  && !convertVideoMessage" [percent]="percent"></app-progress>
+        <img *ngIf="percent == 100" [attr.src]="promo.preview " alt=" " />
+        <div class="loader" *ngIf="convertVideoMessage && (percent == 100) && !showUploadError">Loading...</div>
+        <div *ngIf="showUploadError" class="uploadError">The file convention was broken</div>
+        <p class="convertVideo textCenter" *ngIf="convertVideoMessage && (percent == 100) && !showUploadError">Please wait, video conversion is in progress.</p>
+        <p *ngIf="percent < 100">You can <a href="admin/dashboard/promos/new#upload">add new promo</a> while we uploading this file.</p>
+        <span class="promoStatus"  *ngIf="percent == 100 && !convertVideoMessage" >{{promo.status}}</span>
+    </div>
+
+    <div class="promoItems" id="promoItems" >
+        <div class="promoInfo">
+             <input
+               [attr.id]="promo._id"
+                type="text"
+                    class="form-control"
+                    [(ngModel)]="promo.title"
+                    name="title"
+                    #title="ngModel"
+                    readonly="readonly"
+                    required>
+            <span class="editMode" (click)="editMeta()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23">
+                    <path fill="#FFF" fill-rule="nonzero" d="M16.188 1.27a.345.345 0 0 0-.484.086l-8.02 11.522a.346.346 0 0 0-.06.149l-.529 3.635a.348.348 0 0 0 .511.356l3.226-1.758a.341.341 0 0 0 .119-.107l8.02-11.522a.348.348 0 0 0-.086-.484l-2.697-1.878zm-5.761 13.418l-2.543 1.386.417-2.866L16.076 2.04l2.126 1.48-7.775 11.17zm8.013-6.455c.192 0 .348.156.348.348v11.673c0 1.13-.92 2.05-2.05 2.05H2.05c-1.13 0-2.049-.92-2.049-2.05V5.566c0-1.13.92-2.05 2.05-2.05h8.657a.348.348 0 1 1 0 .696H2.05c-.746 0-1.353.607-1.353 1.354v14.688c0 .747.607 1.354 1.353 1.354h14.69c.746 0 1.353-.607 1.353-1.354V8.581c0-.192.155-.348.348-.348zm1.405-6.314a.348.348 0 1 1-.386.58L16.669.637a.348.348 0 1 1 .385-.58l2.791 1.861z"/>
+                </svg>
+            </span>
+        </div>
+        <app-previews *ngIf="previewsList.length && editPreview" [previewsList]="previewsList" (changePreview)="changePreview($event)"></app-previews>
+        <div *ngIf="!getLink && !editPreview" class='promoItemsWrapper'>
+            <p class="btns">You have
+                <span class="itemsCount" *ngIf="promo?.products.length > 0">{{promo?.products.length}} items</span>
+                <span *ngIf="promo.products.length <=0">no items</span> attached to this promo 
+            </p>
+            <span class="mobileShow asTab" *ngIf="published" (click)="links()">Links</span>
+            <span *ngIf="promo?.products.length > 0" class="clear asTab" (click)="openDialog()">Clear</span>
+            <app-promo-products  (removeItem)="removeItem($event)" [products]="promo?.products" [storeProducts]="shopsList[activeTab]?.products"></app-promo-products>
+        </div>
+        <div *ngIf="getLink && !editPreview" >
+            <app-promo-code [id]="promo._id"></app-promo-code>
+        </div>
+
+        <div class="textRight buttonsPublication">
+            <button *ngIf="!getLink && !editPreview" class="mobileShow mobileAddItem" (click)="(mobileAddItem = true )  && hideDragDrop(true)">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                        <path fill="#FFF" fill-rule="evenodd" d="M10 3.955v2.09H6.057V10H3.943V6.045H0v-2.09h3.943V0h2.114v3.955z"/>
+                    </svg>
+                </span> Add Items
+            </button>
+            <app-button *ngIf="editPreview" (click)="closeEditMode()" [styleBtn]="'mobileHide'">back</app-button>
+            <app-button *ngIf="published && !editPreview" (click)="links()" [styleBtn]="'mobileHide'">{{getLink ? 'back' : 'links'}}</app-button>   
+            <app-button (click)="(promo.products.length && editStatus?.isSaved && statusReady) && publish()" *ngIf="!published && !editPreview" [ngClass]="{ 'show': promo?.products.length }"  [styleBtn]="'right mobileHide btnFull'" [disabled]="(!promo?.products.length || !editStatus?.isSaved || !statusReady)">Publish</app-button>
+            <app-button (click)="(promo.products.length || !published) && save()"  [ngClass]="{ 'show': promo?.products.length }" *ngIf="!editPreview"  [disabled]="(!promo.products.length && published)"  [styleBtn]="'right mobileHide'" >save</app-button>
+            <app-button (click)="deletePromo()" [styleBtn]="'mobileHide right'" *ngIf="!editPreview">delete</app-button>
+        </div>
+    </div>
+</div>
+<div class='productsCatalog mobileHide' [ngClass]="{ 'show': mobileAddItem }">
+    <div (click)=" promo.products.length <= 0 && (showLabels = !showLabels) " class="mobileShow activeTab">
+        <span  class="mobileShow selectDots">
+            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="18" viewBox="0 0 4 18">
+                <path fill="#FFF" fill-rule="nonzero" d="M2 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+            </svg>
+        </span>
+        <span class="activeTabName">{{shopsList[activeTab]?.name}}</span>
+    </div>
+    <mat-tab-group [ngClass]="{'showLabels' : showLabels}" (selectedTabChange)="tabChanged($event)" >
+        <mat-tab *ngFor="let shop of shopsList; let idx = index" label="{{shop.name}}" [disabled]='promo.products.length > 0' >
+            <div class="dark" >
+                <div *ngIf="idx == activeTab" >
+                    <app-products [currency]=[currency] [shop]=[shop.id] [products]="shop.products" [id]="promo._id"></app-products>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <app-button class="mobileShow backToPromo" (click)="hideDragDrop(false)">Back</app-button>
+</div>

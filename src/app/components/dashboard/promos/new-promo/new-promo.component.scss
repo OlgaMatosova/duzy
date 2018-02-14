@@ -1,0 +1,22 @@
+@import '../../../../app.component.scss';
+
+ng4-files-drop {
+    width: 100%;
+}
+
+b {
+    font-weight: 600;
+}
+
+.dragDropWrapper {
+    width: 100%;
+}
+
+.dragIcons {
+    svg {
+        margin: 0 10px;
+    }
+}
+
+
+

@@ -1,0 +1,111 @@
+@import '~admin/scss/base/_variables.scss';
+@import '../button-component/button-component.component.scss';
+:host .mat-button {
+    @include respond-to('medium') {
+        min-width: 95px!important;
+    }
+}
+
+/deep/ .cdk-overlay-container {
+    position: fixed;
+    z-index: 1000;
+
+    .cdk-overlay-backdrop {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        -webkit-tap-highlight-color: transparent;
+        transition: opacity .4s cubic-bezier(.25,.8,.25,1);
+        opacity: 0;
+    }
+
+    .cdk-global-overlay-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        z-index: 1000;
+    }
+
+    .cdk-visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .cdk-overlay-backdrop {
+        background: rgb(20, 34, 39);
+        opacity: 0.75;
+    }
+}
+/deep/ .cdk-global-overlay-wrapper,
+/deep/ .cdk-overlay-container {
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/deep/ .cdk-overlay-backdrop,
+.cdk-overlay-pane {
+    position: absolute;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+/deep/ .mat-dialog-container {
+    background-color: $dark;
+    color: rgba(255,255,255,.87);
+    letter-spacing: 0.6px;
+
+    .header {
+        margin: -23px 0 0 -23px;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px 10px;
+        width: calc(100% + 46px);
+        margin-bottom: 20px;
+
+        .important {
+            float: right;
+
+            svg {
+                @include respond-to('medium') {
+                    width: 10px;
+                    width: 19px;
+                    height: 19px;
+                }
+            }
+        }
+
+        h2 {
+            @include respond-to('medium') {
+                font-size: $base-font-size - 2;
+            }
+            font-size: $base-font-size + 2;
+            font-weight: 500;
+            line-height: 1.39;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+    }
+
+    .mat-dialog-content {
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .mat-dialog-actions {
+        justify-content: center;
+        margin-bottom: 20px!important;      
+    }
+}

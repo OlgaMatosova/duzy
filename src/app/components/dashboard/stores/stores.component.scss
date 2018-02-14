@@ -1,0 +1,73 @@
+@import '~admin/scss/base/_variables.scss';
+
+.storesWrap {
+    .store {
+          @include respond-to('medium') {
+            margin-top: 5px;
+        }
+        margin-top: 35px;
+
+        header {
+            background: rgba(0, 0, 0, 0.1);
+
+            .storeName {
+                letter-spacing: 0.6px;
+                color: $white;
+                font-size: $base-font-size + 2;
+                font-weight: 300;
+                background: rgba(0, 0, 0, 0.3);
+                text-transform: uppercase;
+                padding: 28px 35px;
+                display: inline-block;
+                margin: 0;
+            }
+
+            .editIcons {
+                float: right;
+                padding: 25px 15px;
+
+                .editIcon {
+                    svg {
+                        width: 20px;
+                        height: 23px;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        svg {
+                            path{
+                                fill: $cyan;
+                            }
+                        }
+                    }
+                }
+
+                .delete {
+                    margin-left: 10px;
+
+                    svg {
+
+                        width: 15px;
+                        height: 22px;
+
+                        path {
+                            fill: rgba(255, 255, 255, 0.7);
+                        }
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        svg {
+                            path{
+                                fill: $cyan;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

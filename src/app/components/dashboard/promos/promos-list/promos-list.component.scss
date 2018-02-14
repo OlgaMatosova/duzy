@@ -1,0 +1,182 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '../../../../app.component.scss';
+
+.promoList {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.promoItem {
+    @include respond-to('extra-large') {
+        -ms-flex-preferred-size: calc(100%/3 );
+        flex-basis: calc(100%/3 );
+        max-width: calc(100%/3 );
+    }
+    @include respond-to('medium-large') {
+        -ms-flex-preferred-size: calc(100%/2 );
+        flex-basis: calc(100%/2 );
+        max-width: calc(100%/2 );
+    }
+    @include respond-to('small') {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        max-width: 100%;
+        padding: 15px 0!important;
+    }
+    padding: 15px!important;
+    -ms-flex-preferred-size: calc(25%);
+    flex-basis: calc(25%);
+    order: 1;
+    max-width: calc(25%);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+ 
+    .preview {
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        background: rgba(20, 34, 39, 0.6) url('/admin/images/promo-placeholder-small.png');
+        height: 185px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+
+        img {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .promoStatus {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: $cyan;
+            color: $dark;
+            width: 76px;
+            height: 26px;
+            border-radius:  19.5px;
+            font-size: $base-font-size - 2;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-align: center;
+            line-height: 26px;
+        }
+    }
+
+    .meta {
+        background: rgba(0, 0, 0, 0.3);
+        margin-top: 2px;
+        display: block;
+        width: 100%;
+        padding: 15px 10px;
+        overflow: hidden;
+        height: 80px;
+
+        h3 {
+            font-size: $base-font-size;
+            font-weight: 300;
+            letter-spacing: 0.6px;
+            color: $white;
+            width: calc(100% - 25px);
+            margin: 0 0 6px 0;
+            word-break: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: inline-block;
+        }
+    }
+}
+
+/deep/ .mat-grid-tile .mat-figure {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.itemsCount {
+    flot: left;
+    background: $cyan;
+    color: $dark;
+    padding: 0 5px;
+    height: 26px;
+    border-radius:  19.5px;
+    font-size: $base-font-size - 2;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 26px;
+}
+
+.delete,
+.date {
+    float: right;
+    margin-left: 10px;
+    line-height: $base-font-size + 10;
+    font-size: $base-font-size - 2;
+    font-weight: 300;
+    color: rgba(255, 255, 255,0.5);
+}
+
+.delete {
+    cursor: pointer;
+    line-height: 29px;
+}
+
+.stepForPromo {
+    @include respond-to('medium') {
+        flex-wrap: wrap;
+    }
+    display: flex;
+
+    .stepBlock {
+        @include respond-to('medium') {
+            flex-basis: 100%;
+            margin-bottom: 20px;
+        }
+        flex-basis: 50%;
+        background: rgba(20, 34, 39, 0.6);
+        padding: 10px;
+
+        &Wrap {
+            border: solid 0.5px rgba(73, 189, 202, 0.5);
+            width: 100%;
+            padding: 58px 0 48px 0;
+            text-transform: uppercase;
+            color: $greeny-blue;
+            opacity: 0.5;
+
+            h3 {
+                font-size: $base-font-size + 8;
+                letter-spacing: 0.8px;
+            }
+
+            p {
+                letter-spacing: 0.5px;
+                font-size: $base-font-size;
+            }
+        }
+
+        &.active {
+            cursor: pointer;
+            .stepBlockWrap {
+                opacity: 1;
+            }
+        }
+
+        &:first-child {
+            @include respond-to('medium') {
+                margin-right: 0;
+            }
+            margin-right: 40px;
+        }
+    }
+}
+

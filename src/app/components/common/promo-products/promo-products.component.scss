@@ -1,0 +1,160 @@
+@import '~admin/scss/base/_variables.scss';
+
+:host {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: calc(100% - 118px);
+    flex-direction: column;
+}
+
+.inPromo /deep/ .options,
+.inPromo /deep/ .price,
+.inPromo /deep/ .price,
+.inPromo /deep/ .smallImages {
+    display: none;
+}
+
+.inPromo /deep/ .productDetails .countVariants {
+    @include respond-to('min-large') {
+        font-size: $base-font-size - 2;
+    }
+    @include respond-to('small') {
+        font-size: $base-font-size - 5;
+    }
+    display: block;
+    background: none;
+    text-align: left;
+    font-size: $base-font-size + 2;
+}
+
+.inPromo /deep/ .imageBlock .countVariants {
+    @include respond-to('medium') {
+        display: none!important;
+    }
+}
+
+.inPromo /deep/ .imageBlock {
+    max-width: 100px;
+
+    .mainImage {
+        margin-bottom: 0;
+    }
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.removeItem {
+    @include respond-to('medium') {
+        padding: 0 5px;
+    }
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 0 14px;
+    background: rgba(0, 0, 0, 0.1);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 104%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0;
+        background: $cyan;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+        -webkit-transform: scale(1, 0.5);
+        transform: scale(1, 0.5);
+    }
+
+    &:hover {
+        &::after {
+            opacity: 1;
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+    }
+
+    &:hover {
+        svg  path {
+            fill: $white;
+        }
+    }
+
+    svg {
+        @include respond-to('medium') {
+            width: 10px;
+        }
+        position: relative;
+        z-index: 2;
+
+        path {
+            fill: $white;
+        }
+    }
+}
+
+.promoItem {
+    position: relative;
+}
+
+.pagination {
+    height: 33px;
+    width: 100%;
+
+    li {
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &:hover {
+            span {
+                background: $cyan;
+            }
+        }
+
+        &.active {
+            span {
+                background: $cyan;
+            }
+        }
+    }
+
+    span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+    }
+}
+
+.promoProducts {
+    @include respond-to('small') {
+        height: inherit;
+    }
+    clear: both;
+    padding-top: 10px;
+   width: 100%;
+    margin-bottom: 10px;
+}

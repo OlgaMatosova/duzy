@@ -1,0 +1,228 @@
+@import '~admin/scss/base/_variables.scss';
+:host.inPromo {
+    @include respond-to('small') {
+        padding-top: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+
+    .productTitle {
+        @include respond-to('small') {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 0;
+            height: inherit;
+        }
+    }
+    .productDetails{
+        @include respond-to('small') {
+            margin-left: 5px;
+            padding-right: 20px;
+        }
+    }
+
+    .imageBlock {
+        @include respond-to('small') {
+            width: 33%;
+        }
+    }
+}
+:host {
+
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 10px 0 10px 10px;
+    position: relative;
+}
+
+.mobileShow {
+    @include respond-to('medium') {
+        display: block!important;
+    }
+    display: none;
+}
+
+.mobileHide {
+    @include respond-to('medium') {
+        display: none;
+    }
+    display: block;
+}
+
+.countVariants {
+    letter-spacing: 0.3px;
+    font-size: $base-font-size - 5;
+    color: $white;
+    background: rgba(0,0,0,0.1);
+    text-align: center;
+    display: none;
+}
+
+.productTitle {
+    @include respond-to('min-large') {
+        font-size: $base-font-size ;
+    }
+    @include respond-to('medium') {
+        font-size: $base-font-size - 4;
+       
+        padding-right: 15px;
+
+    }
+    @include respond-to('small') {
+        font-size: $base-font-size - 4;
+       
+        padding-right: 15px;
+   
+    }
+    font-size: $base-font-size + 2;
+    letter-spacing: 0.6px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.price {
+    @include respond-to('min-large') {
+        font-size: $base-font-size - 1;
+    }
+    @include respond-to('medium') {
+        font-size: $base-font-size - 4;
+    }
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    font-size: $base-font-size + 2;
+}
+
+.options {
+    @include respond-to('min-large') {
+        font-size: $base-font-size - 1;
+    }
+    @include respond-to('medium') {
+        font-size: $base-font-size - 4;
+        margin-top: 5px;
+    }
+    font-size: $base-font-size + 2;
+    line-height: 1.44;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: $white;
+    font-weight: 300;
+    margin-top: 15px;
+    list-style: none;
+
+    li {
+        font-weight: 300;
+    }
+
+    .inPromo & {
+        display: none;
+    }
+}
+
+.imageBlock {
+    @include respond-to('min-large') {
+        width: 26%;
+    }
+    @include respond-to('medium') {
+        width: 21%;
+    }
+    @include respond-to('small') {
+        width: 66%;
+    }
+    width: 37%;
+
+    .countVariants {
+        padding: 4px;
+    }
+}
+
+.inPromo {
+    .imageBlock {
+        width: 17%;
+    }
+
+    .options {
+        display: none;
+    }
+}
+
+.smallImages {
+    @include respond-to('medium') {
+        display: none;
+    }
+    display: inline-block;
+    margin-right: 6px;
+    background: white;
+    width: calc(100%/3 - 4.5px);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    &:nth-child(3n+1) {
+        margin-right: 0;
+    }
+
+    &.selected {
+        border: solid 2px $cyan;
+    }
+
+    img {
+        cursor: pointer;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        height: 100%;
+        display: inherit;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: 300%;
+        transform: translate(-50%, -50%);
+
+
+    }
+}
+
+.productDetails {
+    width: 100%;
+    margin-left: 15px;
+    color: $white;
+    font-family: $base-font-sans-serif!important;
+    padding-right: 50px;
+}
+
+.mainImage {
+    @include respond-to('medium') {
+        margin-bottom: 0;
+    }
+    max-width: 100%;
+    background: white;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    img {
+        height: 100%;
+        display: inherit;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: 300%;
+        transform: translate(-50%, -50%);
+    }
+}

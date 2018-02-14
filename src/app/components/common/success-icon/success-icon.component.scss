@@ -1,0 +1,55 @@
+@import '~admin/scss/base/_variables.scss';
+:host {
+    @include respond-to('medium') {
+        width: 60px;
+        height: 60px;
+    }
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    opacity: 0;
+    &.show {
+        -webkit-animation: success 1.5s  forwards;  /* Safari 4+ */
+        -moz-animation:    success 1.5s  forwards;  /* Fx 5+ */
+        -o-animation:      success 1.5s forwards;  /* Opera 12+ */
+        animation:         success 1.5s  forwards;  /* IE 10+, Fx 29+ */
+    }
+    
+    svg {
+        @include respond-to('medium') {
+            width: 40px;
+            height: 40px;
+        }
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@-webkit-keyframes success {
+    0%   { opacity:0; }
+    50%   { opacity: 1; }
+    100% {  opacity: 0;}
+}
+@-moz-keyframes success {
+   0%   { opacity:0; }
+    50%   { opacity: 1; }
+    100% {  opacity: 0;}
+}
+@-o-keyframes success {
+      0%   { opacity:0; }
+    50%   { opacity: 1; }
+    100% {  opacity: 0;}
+}
+@keyframes success {
+     0%   { opacity:0; }
+    50%   { opacity: 1; }
+    100% {  opacity: 0;}
+}

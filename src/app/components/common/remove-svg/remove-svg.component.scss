@@ -1,0 +1,71 @@
+@import '~admin/scss/base/_variables.scss';
+.removeItem {
+    @include respond-to('min-large') {
+        padding: 0 5px;
+    }
+    @include respond-to('medium') {
+        padding: 0 5px;
+    }
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 0 14px;
+    background: rgba(0, 0, 0, 0.1);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    overflow: hidden;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 104%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0;
+        background: $cyan;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+        -webkit-transform: scale(1, 0.5);
+        transform: scale(1, 0.5);
+    }
+    
+    &:hover {
+        &::after {
+            opacity: 1;
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+    }
+    
+    &:hover {
+        svg  path {
+            fill: $white;
+        }
+    }
+    
+    svg {
+        @include respond-to('medium') {
+            width: 10px;
+        }
+        position: relative;
+        z-index: 2;
+        
+        path {
+            fill: $white;
+        }
+    }
+}

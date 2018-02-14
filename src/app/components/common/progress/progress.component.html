@@ -1,0 +1,7 @@
+<div class="progressWrap">
+    <span class='percent'>{{percent}} %</span>
+    <svg class="progress" width="180" height="180" viewBox="0 0 180 180">
+        <circle class="progress__meter" cx="90" cy="90" r="80" stroke-width="12" />
+        <circle class="progress__value" cx="90" cy="90" r="80" stroke-width="12" [ngStyle]="{'stroke-dashoffset': strokeDashoffset, 'stroke-dasharray': strokeDasharray}" />
+    </svg>
+</div>

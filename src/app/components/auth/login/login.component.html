@@ -1,0 +1,45 @@
+<form (ngSubmit)="loginF.valid && onLogin()"
+    class="authForm" #loginF="ngForm" novalidate>
+    <div class="form-group" ngModelGroup="login" ngModelGroup="password" [ngClass]="{ 'has-error': loginF.submitted && !login.valid }">
+        <label class="label" for="login">Email Address</label>
+        <input
+            type="text"
+            class="form-control"
+            id="login"
+            [(ngModel)]="user.login"
+            name="login"
+            maxlength="60"
+            id='login'
+            pattern="^\S+@\S+$"
+            autocapitalize="none"
+            #login="ngModel"
+            required>
+    </div>
+    
+    <div class="form-group" ngModelGroup="password" [ngClass]="{ 'has-error': loginF.submitted && !password.valid }">
+        <label class="label" for="password">Password</label>
+        <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            id="password"
+            [(ngModel)]="user.password"
+            name="password"
+            maxlength="30"
+            minlength="8"
+            #password="ngModel"
+            required>
+        <span class="changeTypePass" (click)="showPassword = !showPassword"><i class="material-icons">{{(showPassword ? 'visibility' : 'visibility_off')}}</i></span>
+    </div>
+    <div class="forgotPassLink"><a class="runLineLink" routerLink="/admin/request-reset-password">Forgot your password?</a></div>
+    <div class="forgotPassLink"><a class="runLineLink" routerLink="/admin/request-verify-link">Send me verification link</a></div>
+    <p class="textCenter submitBtnWrap"><app-button #input><span>sign in</span></app-button></p>
+    <p class="rememberMe textCenter"><mat-checkbox [(ngModel)]="user.remember" #remember="ngModel" name="remember">Remember me</mat-checkbox></p>
+    <p class="regLink textCenter">New to Düzy? <a class="runLineLink" [routerLink]="['/admin/register']"><b>Create an account</b></a></p>
+</form>
+
+<div [@popOverState]="checkValidity(login, password, loginF)" class="errorWrap">
+    <i class="material-icons">error</i>
+    <show-errors [control]="login" [form]="loginF"></show-errors>
+    <show-errors [form]="loginF" [control]="password"></show-errors>
+    <div class="errorLine" *ngIf="show">{{serverError}}</div>
+</div>

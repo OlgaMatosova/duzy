@@ -1,0 +1,15 @@
+<div class="header">
+    <h2 mat-dialog-title>{{headerText}}
+        <svg class='important' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+            <path fill="#49BDCA" fill-rule="nonzero" d="M15 0C6.75 0 0 6.75 0 15s6.75 15 15 15 15-6.75 15-15S23.25 0 15 0zm1.5 22.5h-3v-3h3v3zm0-6h-3v-9h3v9z"/>
+        </svg>
+    </h2>
+</div>
+<div>
+  
+    <mat-dialog-content *ngIf="promoListText">{{promoListText}}</mat-dialog-content>
+    <mat-dialog-actions>
+        <button *ngIf="!hideCancel" mat-button mat-dialog-close><span>Cancel</span></button>
+        <button mat-button [mat-dialog-close]="true"><span>Ok</span></button>
+    </mat-dialog-actions>
+</div>

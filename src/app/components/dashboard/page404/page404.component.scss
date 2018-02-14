@@ -1,0 +1,45 @@
+@import '~admin/scss/base/_variables.scss';
+:host {
+        @include respond-to('medium') {
+             height: calc(100vh - 100px);
+        }
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: calc(100vh - 180px);
+        div {
+            flex-basis: 100%;
+            text-align: center;
+        }
+}
+h1 {
+     @include respond-to('min-large') {
+        font-size: 188px;
+          line-height: 60px;
+            height: auto;
+    }
+    @include respond-to('medium') {
+        font-size: 88px;
+         line-height: 60px;
+            height: auto;
+    }
+    color: $white;
+    font-size: 288px;
+    line-height: 80px;
+    height: 180px;
+    margin: 0;
+}
+
+h3 {
+    @include respond-to('min-large') {
+        font-size: 54px;
+ 
+    }
+    @include respond-to('medium') {
+        font-size: 34px;
+      }
+    margin: 30px 0;
+    font-size: 64px;
+    color: $white;
+    font-weight: 300;
+}

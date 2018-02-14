@@ -1,0 +1,25 @@
+<form (ngSubmit)="resetF.valid && onSendReset()" class="authForm" #resetF="ngForm" novalidate>
+    <div class="form-group" ngModelGroup="email" [ngClass]="{ 'has-error': resetF.submitted && !email.valid }">
+        <label class="label" for="email">Email Address</label>
+        <input
+            type="text"
+            class="form-control"
+            id="email"
+            [(ngModel)]="user.email"
+            name="email"
+            pattern="^\S+@\S+$"
+            #email="ngModel"
+            maxlength="60"
+            autocapitalize="none"
+            required>
+    </div>
+    <p class="textCenter">We will send you an email with instructions for email address verification</p>
+    <p class="textCenter submitBtnWrap"><app-button><span>send</span></app-button></p>
+    <p class="regLink textCenter"><a class="runLineLink" [routerLink]="['/admin/login']"><b>Back to login screen</b></a></p>
+</form>
+
+<div [@popOverState]="checkValidity(email, resetF)" class="errorWrap">
+    <i class="material-icons">error</i>
+    <show-errors [control]="email" [form]="resetF"></show-errors>
+    <div class="errorLine" *ngIf="show">{{serverError}}</div>
+</div>

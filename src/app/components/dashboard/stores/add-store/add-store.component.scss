@@ -1,0 +1,205 @@
+@import '../../../../app.component.scss';
+
+:host {
+    display: block;
+
+.form-group {
+    position: relative;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.tips {
+    @include respond-to('medium') {
+        top: -4%;
+    }
+    color: $white;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &.active {
+        @include respond-to('medium') {
+            color: $white;
+            opacity: 0.5;
+        }
+        color: $cyan;
+        opacity: 1;
+    }
+
+    i {
+        font-size: $base-font-size - 1;
+    }
+}
+
+.tabWrap {
+    @include respond-to('medium') {
+        flex-wrap: wrap;
+        position: relative;
+    }
+    display: flex;
+    margin-top: 2px;
+}
+
+.formWrap,
+.tipsWrap {
+    @include respond-to('medium') {
+        flex-basis: 100%;
+        padding: 20px 10px;
+
+        .formForm {
+            padding: 0;
+
+            .label {
+                font-size: $base-font-size - 5;
+            }
+        }
+    }
+
+    padding: 35px;
+    flex-basis: 50%;
+    background: rgba(0, 0, 0, 0.3);
+
+    .formForm {
+        padding: 0;
+    }
+}
+
+.formWrap {
+    @include respond-to('medium') {
+        &.showing {
+            display: none;
+        }
+    }
+}
+
+.tipsWrap {
+    @include respond-to('medium') {
+        min-height: 262px;
+        height: 100%;
+        padding-bottom: 50px;
+        font-size: $base-font-size - 2;
+        z-index: 2;
+        display: none;
+
+        &.showing {
+            display: block;
+        }
+    }
+    color: $white;
+    margin-left: 1px;
+    font-size: $base-font-size + 2;
+    font-weight: 300;
+    line-height: $base-font-size + 10;
+    font-family: $base-font-sans-serif;
+
+    .tipsControl {
+        position: absolute;
+        bottom: 25px;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.mat-tab-labels {
+    background: $white;
+}
+
+/deep/  .mat-tab-labels {
+    @include respond-to('medium') {
+        display: block;
+        left: 40px;
+        z-index: 2;
+    }
+}
+
+/deep/ .mat-tab-label {
+    @include respond-to('min-large') {
+        height: 60px!important;
+        line-height: 60px!important;
+        font-size: $base-font-size;
+        min-width: 120px;
+    }
+    @include respond-to('medium') {
+        font-size: $base-font-size;
+        display: none;
+        height: 40px!important;
+        line-height: 40px!important;
+
+        border: 0;
+
+        &-active {
+            display: block;
+        }
+    }
+
+    max-width: 205px;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    color: $white;
+    font-size: $base-font-size + 2;
+    opacity: 1!important;
+    height: 80px!important;
+    min-width: 150px;
+    border-left: 1px solid rgba(87, 132, 152, 0.7);
+
+    &:first-child {
+        border-left: 0px solid rgba(87, 132, 152, 0.7);
+    }
+
+    &.mat-tab-label-active {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+.mat-tab-header,
+.mat-tab-label-container {
+    @include respond-to('medium') {
+        z-index: 3;
+        overflow: visible;
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
+
+/deep/ .mat-ripple-element {
+    display: none!important;
+}
+
+/deep/ .mat-tab-body-content {
+    overflow-y: hidden!important;
+    overflow: hidden!important;
+    padding: 0!important;
+}
+
+.errorLine {
+    color: $watermelon;
+
+    &:first-letter {
+        text-transform: uppercase;
+    }
+}
+
+
+/deep/ .mat-tab-body-wrapper {
+    height: auto!important;
+    background: none!important;
+}
+
+.tipsControl /deep/ .mat-button {
+        @include respond-to('medium') {
+            min-width: 100px!important;
+        }
+}
+}

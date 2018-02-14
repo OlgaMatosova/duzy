@@ -1,0 +1,135 @@
+@import '~admin/scss/base/_variables.scss';
+:host {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 37px;
+    background: rgba(20, 34, 39, 0.5);
+}
+
+
+/deep/ .dragDropWrapper {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    margin: 18px;
+    color: $greeny-blue;
+
+    &::before {
+        content: "";
+        position: absolute;
+        border: 7px dashed #1e5f6f;
+        top: -5px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
+        z-index: 0;
+    }
+
+    &.wrongFile {
+        -webkit-animation: showError 5s ; /* Safari 4+ */
+        -moz-animation:    showError 5s ; /* Fx 5+ */
+        -o-animation:      showError 5s ; /* Opera 12+ */
+        animation:         showError 5s ; /* IE 10+, Fx 29+ */
+        &::before {
+            -webkit-animation: showError 5s ; /* Safari 4+ */
+            -moz-animation:    showError 5s ; /* Fx 5+ */
+            -o-animation:      showError 5s ; /* Opera 12+ */
+            animation:         showError 5s ; /* IE 10+, Fx 29+ */
+
+        }
+        svg {
+            path{
+                -webkit-animation: showError 5s ; /* Safari 4+ */
+                -moz-animation:    showError 5s ; /* Fx 5+ */
+                -o-animation:      showError 5s ; /* Opera 12+ */
+                animation:         showError 5s ; /* IE 10+, Fx 29+ */
+            }
+
+        }
+    }
+}
+
+/deep/ ng4-files-click {
+    position: relative;
+    z-index: 2;
+
+    label {
+        @include respond-to('medium') {
+            margin-top: 0;
+
+            app-dragicon {
+                svg {
+                    @include respond-to('min-large') {
+                        height: 100px;
+                    }
+                    @include respond-to('small') {
+                        height: 50px;
+                    }
+                    width: 100px;
+                    height: 95px;
+                }
+            }
+        }
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin-top: 13px;
+        letter-spacing: 0.5px;
+
+        h3 {
+            @include respond-to('medium') {
+                margin-top: 5px;
+                font-size: $base-font-size;
+            }
+            @include respond-to('min-large') {
+                font-size: $base-font-size - 2;
+            }
+            text-transform: uppercase;
+            font-size: $base-font-size + 4;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .dragIcons {
+            @include respond-to('medium') {
+                margin-top: 10px;
+            }
+            margin-top: 40px;
+            margin-bottom: 9px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        small {
+            @include respond-to('medium') {
+                font-size: $base-font-size - 4;
+            }
+            font-size: $base-font-size - 2;
+        }
+    }
+}
+
+@-webkit-keyframes showError {
+    0%   { color: $watermelon; fill: $watermelon; border-color: $watermelon; }
+    100% { color: $greeny-blue; fill:  $greeny-blue; border-color: $greeny-blue; }
+}
+@-moz-keyframes showError {
+    0%   { color: $watermelon; fill: $watermelon; border-color: $watermelon; }
+    100% { color: $greeny-blue; fill:  $greeny-blue; border-color: $greeny-blue; }
+}
+@-o-keyframes showError {
+    0%   { color: $watermelon; fill: $watermelon; border-color: $watermelon; }
+    100% { color: $greeny-blue; fill:  $greeny-blue; border-color: $greeny-blue; }
+}
+@keyframes showError {
+    0%   { color: $watermelon; fill: $watermelon; border-color: $watermelon; }
+    100% { color: $greeny-blue; fill:  $greeny-blue; border-color: $greeny-blue; }
+}
